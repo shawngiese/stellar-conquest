@@ -11,7 +11,7 @@ Attempting to simulate the board game Stellar Conquest. It has always proven har
 
 RUN 
 Execute either the following and see the logs as they are generated
-python3 auto_demo_enhanced_maps.py | tee output/output_statsTEST.txt
+python auto_demo_enhanced_maps.py | tee output/output_statsTEST.txt
 
 or the following, but no onscreen updates for 3 minutes
 python auto_demo_enhanced_maps.py > output/outputTEST.txt
@@ -20,6 +20,7 @@ Typical run time is 3 minutes, 2 for the simulation and 1 more for writing a lot
 
 THEN
 open map_index.html
+maps are SVG so you can zoom your browser in to see details.
 
 OPTIONAL
 Other tools 
@@ -62,3 +63,4 @@ For example:
 * Nobody tries to conquer another's colonies
 * Enable What-If Scenarios to run combat, production and strategy scenarios
 * Monte Carlo support - to run thousands of iterations for statistical significance
+* Clean up fly distance markings on the map

@@ -13,6 +13,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import matplotlib
 matplotlib.use('Agg')  # Use non-interactive backend for server environments
 
+# Fix Windows console encoding for Unicode/emoji support
+if sys.platform == 'win32':
+    try:
+        # Try to set UTF-8 encoding for stdout/stderr
+        import io
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        # If that fails, just replace problematic characters
+        pass
+   
 # Import demo components
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'stellar_conquest'))
 from stellar_conquest.core.enums import PlayStyle, GamePhase, ShipType, Technology
