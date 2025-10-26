@@ -29,9 +29,9 @@ Other tools
   helpful commands.
 
   Usage:
-  python3 audit_players.py output/outputTEST.txt 
-  python3 audit_players.py --list
-  python3 audit_players.py --help
+  python audit_players.py output/outputTEST.txt 
+  python audit_players.py --list
+  python audit_players.py --help
 
 
 - audit_taskforce.py
@@ -42,8 +42,8 @@ Other tools
   - Missing turn identification
 
   Usage:
-  python3 audit_taskforce.py output/outputTEST.txt
-  python3 audit_taskforce.py --list
+  python audit_taskforce.py output/outputTEST.txt
+  python audit_taskforce.py --list
 
 
 IDEAS
