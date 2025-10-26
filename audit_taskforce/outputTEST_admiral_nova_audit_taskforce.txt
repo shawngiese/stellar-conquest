@@ -1,0 +1,1384 @@
+================================================================================
+  ADMIRAL NOVA'S TASKFORCE MOVEMENT AUDIT
+  Generated from: outputTEST.txt
+================================================================================
+
+📊 TASKFORCE SUMMARY
+----------------------------------------
+Player: ADMIRAL NOVA
+Total Taskforces: 17
+  TF2: Created Turn 1, 57 events, last at E17
+  TF3: Created Turn 1, 15 events, last at N6
+  TF4: Created Turn 1, 59 events, last at L6
+  TF5: Created Turn 1, 59 events, last at L10
+  TF6: Created Turn 1, 72 events, last at U8
+  TF7: Created Turn 1, 12 events, last at I10
+  TF8: Created Turn 1, 38 events, last at O16
+  TF9: Created Turn 1, 66 events, last at O13
+  TF10: Created Turn 1, 61 events, last at W11
+  TF11: Created Turn Unknown, 6 events, last at I10
+  TF12: Created Turn Unknown, 9 events, last at O4
+  TF13: Created Turn Unknown, 9 events, last at R14
+  TF14: Created Turn Unknown, 6 events, last at P10
+  TF15: Created Turn Unknown, 6 events, last at Q11
+  TF16: Created Turn Unknown, 3 events, last at S10
+  TF17: Created Turn Unknown, 3 events, last at L13
+  TF18: Created Turn Unknown, 3 events, last at Q2
+
+================================================================================
+  DETAILED TASKFORCE HISTORIES
+================================================================================
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 2                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout + 1 corvette
+Primary Target: Indi at D4
+Created: Turn 1
+Status: active
+Total Events: 57
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout + 1 corvette targeting Indi at D4
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → C3 → C4 → D4
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → C3 → C4 → D4
+   🚀 MOVED - Advanced from C2 to D4
+   🏁 ARRIVED - Reached destination Indi
+
+Turn  3:
+   📍 POSITION - At D4 - Ships: 1 scout - Path: A1 → B1 → C2 → C3 → C4 → D4
+
+Turn  4:
+   📍 POSITION - At D4 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+   🚀 MOVED - Advanced from D4 to J5
+
+Turn  5:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn  6:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn  7:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn  8:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn  9:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 10:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 11:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 12:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 13:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 14:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 15:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 16:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+
+Turn 17:
+   📍 POSITION - At J5 - Ships: 1 scout - Path: G5 → H4 → I5 → J5 → K6 → L6
+   🚀 MOVED - Advanced from J5 to K6
+
+Turn 18:
+   📍 POSITION - At K6 - Ships: 1 scout - Path: I10 → J9 → K9 → L8 → L7 → L6
+   🚀 MOVED - Advanced from K6 to L7
+
+Turn 19:
+   📍 POSITION - At L7 - Ships: 1 scout - Path: I16 → H16 → G16 → F16 → E17
+   🚀 MOVED - Advanced from L7 to E17
+   🏁 ARRIVED - Reached destination Ceti
+
+Turn 20:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+   🚀 MOVED - Advanced from E17 to C15
+
+Turn 21:
+   📍 POSITION - At C15 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+   🚀 MOVED - Advanced from C15 to D15
+
+Turn 22:
+   📍 POSITION - At D15 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+   🚀 MOVED - Advanced from D15 to E17
+   🏁 ARRIVED - Reached destination Ceti
+
+Turn 23:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 24:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 25:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 26:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 27:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 28:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 29:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 30:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 31:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 32:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 33:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 34:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 35:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 36:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 37:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 38:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 39:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 40:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 41:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 42:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 43:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+Turn 44:
+   📍 POSITION - At E17 - Ships: 1 scout - Path: B11 → C12 → C13 → C14 → C15 → D15 → D16 → E17
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 3                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout + 1 corvette
+Primary Target: Canis at G5
+Created: Turn 1
+Status: active
+Total Events: 15
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout + 1 corvette targeting Canis at G5
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from C2 to E4
+
+Turn  3:
+   📍 POSITION - At E4 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from E4 to G5
+   🏁 ARRIVED - Reached destination Canis
+
+Turn  4:
+   📍 POSITION - At G5 - Ships: 1 scout - Path: H2 → I3 → J3 → K4 → L4 → M5 → N5 → N6
+   🚀 MOVED - Advanced from G5 to K4
+
+Turn  5:
+   📍 POSITION - At K4 - Ships: 1 scout - Path: H2 → I3 → J3 → K4 → L4 → M5 → N5 → N6
+   🚀 MOVED - Advanced from K4 to N5
+
+Turn  6:
+   📍 POSITION - At N5 - Ships: 1 scout - Path: H2 → I3 → J3 → K4 → L4 → M5 → N5 → N6
+   🚀 MOVED - Advanced from N5 to N6
+   🏁 ARRIVED - Reached destination Kochab
+
+⚠️  No activity recorded for turns: 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 4                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Ophiuchi at H2
+Created: Turn 1
+Status: active
+Total Events: 59
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Ophiuchi at H2
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2
+   🚀 MOVED - Advanced from C2 to F2
+
+Turn  3:
+   📍 POSITION - At F2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2
+   🚀 MOVED - Advanced from F2 to H2
+   🏁 ARRIVED - Reached destination Ophiuchi
+
+Turn  4:
+   📍 POSITION - At H2 - Ships: 1 scout - Path: E7 → E8 → E9 → E10 → E11 → E12 → E13 → D13
+   🚀 MOVED - Advanced from H2 to E10
+
+Turn  5:
+   📍 POSITION - At E10 - Ships: 1 scout - Path: E7 → E8 → E9 → E10 → E11 → E12 → E13 → D13
+   🚀 MOVED - Advanced from E10 to E13
+
+Turn  6:
+   📍 POSITION - At E13 - Ships: 1 scout - Path: E7 → E8 → E9 → E10 → E11 → E12 → E13 → D13
+   🚀 MOVED - Advanced from E13 to D13
+   🏁 ARRIVED - Reached destination Luyten
+
+Turn  7:
+   📍 POSITION - At D13 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+   🚀 MOVED - Advanced from D13 to O2
+
+Turn  8:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn  9:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 10:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 11:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 12:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 13:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 14:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 15:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 16:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+
+Turn 17:
+   📍 POSITION - At O2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+   🚀 MOVED - Advanced from O2 to P2
+
+Turn 18:
+   📍 POSITION - At P2 - Ships: 1 scout - Path: L3 → M3 → N2 → O2 → P2 → Q2
+   🚀 MOVED - Advanced from P2 to Q2
+   🏁 ARRIVED - Reached destination Mizar
+
+Turn 19:
+   📍 POSITION - At Q2 - Ships: 1 scout - Path: L3 → L4 → M5 → M6 → L6
+   🚀 MOVED - Advanced from Q2 to L6
+   🏁 ARRIVED - Reached destination Mirfak
+
+Turn 20:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: N6 → M7 → L6
+
+Turn 21:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: N6 → M7 → L6
+
+Turn 22:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: N6 → M7 → L6
+
+Turn 23:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 24:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 25:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 26:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 27:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 28:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 29:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 30:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 31:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 32:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 33:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 34:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 35:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 36:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 37:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 38:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 39:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 40:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 41:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 42:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 43:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+Turn 44:
+   📍 POSITION - At L6 - Ships: 1 scout - Path: O4 → O5 → N5 → M6 → L6
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 5                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Kapetyn at E7
+Created: Turn 1
+Status: active
+Total Events: 59
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Kapetyn at E7
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+   🚀 MOVED - Advanced from C2 to E4
+
+Turn  3:
+   📍 POSITION - At E4 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+   🚀 MOVED - Advanced from E4 to E7
+   🏁 ARRIVED - Reached destination Kapetyn
+
+Turn  4:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn  5:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn  6:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn  7:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn  8:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn  9:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn 10:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn 11:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → E5 → E6 → E7
+
+Turn 12:
+   📍 POSITION - At E7 - Ships: 1 scout - Path: G5 → G6 → G7 → G8 → H8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from E7 to G8
+
+Turn 13:
+   📍 POSITION - At G8 - Ships: 1 scout - Path: I8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from G8 to K10
+
+Turn 14:
+   📍 POSITION - At K10 - Ships: 1 scout - Path: G5 → G6 → G7 → G8 → H8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from K10 to G8
+
+Turn 15:
+   📍 POSITION - At G8 - Ships: 1 scout - Path: E7 → F7 → G8 → H8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from G8 to H8
+
+Turn 16:
+   📍 POSITION - At H8 - Ships: 1 scout - Path: E7 → F7 → G8 → H8 → I9 → J9 → K10 → L10
+
+Turn 17:
+   📍 POSITION - At H8 - Ships: 1 scout - Path: E7 → F7 → G8 → H8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from H8 to I9
+
+Turn 18:
+   📍 POSITION - At I9 - Ships: 1 scout - Path: E7 → F7 → G8 → H8 → I9 → J9 → K10 → L10
+   🚀 MOVED - Advanced from I9 to L10
+   🏁 ARRIVED - Reached destination Alphard
+
+Turn 19:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: N6 → N7 → M8 → M9 → L9 → L10
+   🚀 MOVED - Advanced from L10 to L9
+
+Turn 20:
+   📍 POSITION - At L9 - Ships: 1 scout - Path: N8 → N9 → M10 → L10
+   🚀 MOVED - Advanced from L9 to L10
+   🏁 ARRIVED - Reached destination Alphard
+
+Turn 21:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: N8 → N9 → M10 → L10
+
+Turn 22:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: N8 → N9 → M10 → L10
+
+Turn 23:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 24:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 25:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 26:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 27:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 28:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 29:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 30:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 31:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 32:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 33:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 34:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 35:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 36:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 37:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 38:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 39:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 40:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 41:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 42:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 43:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+Turn 44:
+   📍 POSITION - At L10 - Ships: 1 scout - Path: Q8 → P8 → O9 → N9 → M10 → L10
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 6                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Sirius at B11
+Created: Turn 1
+Status: active
+Total Events: 72
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Sirius at B11
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → B4 → B5 → B6 → B7 → B8 → B9 → B10 → B11
+   🚀 MOVED - Advanced from A1 to A3
+
+Turn  2:
+   📍 POSITION - At A3 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → B4 → B5 → B6 → B7 → B8 → B9 → B10 → B11
+   🚀 MOVED - Advanced from A3 to B5
+
+Turn  3:
+   📍 POSITION - At B5 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → B4 → B5 → B6 → B7 → B8 → B9 → B10 → B11
+   🚀 MOVED - Advanced from B5 to B8
+
+Turn  4:
+   📍 POSITION - At B8 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → B4 → B5 → B6 → B7 → B8 → B9 → B10 → B11
+   🚀 MOVED - Advanced from B8 to B11
+   🏁 ARRIVED - Reached destination Sirius
+
+Turn  5:
+   📍 POSITION - At B11 - Ships: 1 scout - Path: B11 → C12 → D12 → E12 → F12 → G12 → H12
+   🚀 MOVED - Advanced from B11 to E12
+
+Turn  6:
+   📍 POSITION - At E12 - Ships: 1 scout - Path: B11 → C12 → D12 → E12 → F12 → G12 → H12
+   🚀 MOVED - Advanced from E12 to H12
+   🏁 ARRIVED - Reached destination Eridani
+
+Turn  7:
+   📍 POSITION - At H12 - Ships: 1 scout - Path: N6 → N7 → N8
+   🚀 MOVED - Advanced from H12 to N8
+   🏁 ARRIVED - Reached destination Capella
+
+Turn  8:
+   📍 POSITION - At N8 - Ships: 1 scout - Path: N6 → N7 → N8
+
+Turn  9:
+   📍 POSITION - At N8 - Ships: 1 scout - Path: N6 → N7 → N8
+
+Turn 10:
+   📍 POSITION - At N8 - Ships: 1 scout - Path: N8 → O9 → O10 → P10
+   🚀 MOVED - Advanced from N8 to P10
+   🏁 ARRIVED - Reached destination Canopus
+
+Turn 11:
+   📍 POSITION - At P10 - Ships: 1 scout - Path: I8 → I9 → J9 → K10 → L9 → M10 → N9 → O10 → P10
+   🚀 MOVED - Advanced from P10 to K10
+
+Turn 12:
+   📍 POSITION - At K10 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → I12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from K10 to I11
+
+Turn 13:
+   📍 POSITION - At I11 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → I12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from I11 to H13
+
+Turn 14:
+   📍 POSITION - At H13 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → I12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from H13 to I16
+   🏁 ARRIVED - Reached destination Rastaban
+
+Turn 15:
+   📍 POSITION - At I16 - Ships: 1 scout - Path: F9 → F10 → G11 → G12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from I16 to G12
+
+Turn 16:
+   📍 POSITION - At G12 - Ships: 1 scout - Path: F9 → F10 → G11 → G12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from G12 to H14
+
+Turn 17:
+   📍 POSITION - At H14 - Ships: 1 scout - Path: F9 → F10 → G11 → G12 → H12 → H13 → H14 → I15 → I16
+   🚀 MOVED - Advanced from H14 to I16
+   🏁 ARRIVED - Reached destination Rastaban
+
+Turn 18:
+   📍 POSITION - At I16 - Ships: 1 scout - Path: F9 → F10 → G11 → G12 → H12 → H13 → H14 → I15 → I16
+
+Turn 19:
+   📍 POSITION - At I16 - Ships: 1 scout - Path: N8 → N7 → N6 → N5 → O5 → P4 → P3 → P2 → Q2
+   🚀 MOVED - Advanced from I16 to O5
+
+Turn 20:
+   📍 POSITION - At O5 - Ships: 1 scout - Path: N8 → N7 → N6 → N5 → O5 → P4 → P3 → P2 → Q2
+   🚀 MOVED - Advanced from O5 to Q2
+   🏁 ARRIVED - Reached destination Mizar
+
+Turn 21:
+   📍 POSITION - At Q2 - Ships: 1 scout - Path: N8 → N7 → N6 → N5 → O5 → P4 → P3 → P2 → Q2
+
+Turn 22:
+   📍 POSITION - At Q2 - Ships: 1 scout - Path: Q2 → Q3 → Q4 → Q5 → Q6 → R6 → S7 → T7 → U8
+   🚀 MOVED - Advanced from Q2 to R6
+
+Turn 23:
+   📍 POSITION - At R6 - Ships: 1 scout - Path: P10 → Q10 → R9 → S9 → T8 → U8
+   🚀 MOVED - Advanced from R6 to U8
+   🏁 ARRIVED - Reached destination Spica
+
+Turn 24:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 25:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 26:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 27:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 28:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 29:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 30:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 31:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 32:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 33:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 34:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 35:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 36:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 37:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 38:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 39:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 40:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 41:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 42:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 43:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+Turn 44:
+   📍 POSITION - At U8 - Ships: 1 scout - Path: Q11 → R10 → R9 → S9 → T8 → U8
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 7                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Diphda at F9
+Created: Turn 1
+Status: active
+Total Events: 12
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Diphda at F9
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → A5 → A6 → A7 → B7 → C8 → D8 → E9 → F9
+   🚀 MOVED - Advanced from A1 to A3
+
+Turn  2:
+   📍 POSITION - At A3 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → A5 → A6 → A7 → B7 → C8 → D8 → E9 → F9
+   🚀 MOVED - Advanced from A3 to A6
+
+Turn  3:
+   📍 POSITION - At A6 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → A5 → A6 → A7 → B7 → C8 → D8 → E9 → F9
+   🚀 MOVED - Advanced from A6 to C8
+
+Turn  4:
+   📍 POSITION - At C8 - Ships: 1 scout - Path: A1 → A2 → A3 → A4 → A5 → A6 → A7 → B7 → C8 → D8 → E9 → F9
+   🚀 MOVED - Advanced from C8 to F9
+   🏁 ARRIVED - Reached destination Diphda
+
+Turn  5:
+   📍 POSITION - At F9 - Ships: 1 scout - Path: F9 → G10 → H9 → I10 → J9 → K10 → L10
+   🚀 MOVED - Advanced from F9 to I10
+
+⚠️  No activity recorded for turns: 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 8                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Deneb at I8
+Created: Turn 1
+Status: active
+Total Events: 38
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Deneb at I8
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5 → G6 → G7 → H7 → I8
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5 → G6 → G7 → H7 → I8
+   🚀 MOVED - Advanced from C2 to E4
+
+Turn  3:
+   📍 POSITION - At E4 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5 → G6 → G7 → H7 → I8
+   🚀 MOVED - Advanced from E4 to G6
+
+Turn  4:
+   📍 POSITION - At G6 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5 → G6 → G7 → H7 → I8
+   🚀 MOVED - Advanced from G6 to I8
+   🏁 ARRIVED - Reached destination Deneb
+
+Turn  5:
+   📍 POSITION - At I8 - Ships: 1 scout - Path: I8 → I9 → J9 → K10 → L9 → M9 → N8
+   🚀 MOVED - Advanced from I8 to K10
+
+Turn  6:
+   📍 POSITION - At K10 - Ships: 1 scout - Path: L3 → M3 → N3 → O4
+   🚀 MOVED - Advanced from K10 to O4
+   🏁 ARRIVED - Reached destination Schedar
+
+Turn  7:
+   📍 POSITION - At O4 - Ships: 1 scout - Path: O4 → P4 → Q5 → Q6 → R6
+   🚀 MOVED - Advanced from O4 to Q6
+
+Turn  8:
+   📍 POSITION - At Q6 - Ships: 1 scout - Path: O4 → P4 → Q5 → Q6 → R6
+   🚀 MOVED - Advanced from Q6 to R6
+   🏁 ARRIVED - Reached destination Caph
+
+Turn  9:
+   📍 POSITION - At R6 - Ships: 1 scout - Path: R6 → R7 → Q8
+   🚀 MOVED - Advanced from R6 to Q8
+   🏁 ARRIVED - Reached destination Crucis
+
+Turn 10:
+   📍 POSITION - At Q8 - Ships: 1 scout - Path: Q8 → Q9 → Q10 → Q11
+   🚀 MOVED - Advanced from Q8 to Q11
+   🏁 ARRIVED - Reached destination Draconis
+
+Turn 11:
+   📍 POSITION - At Q11 - Ships: 1 scout - Path: Q11 → R10 → S10
+   🚀 MOVED - Advanced from Q11 to S10
+   🏁 ARRIVED - Reached destination Almach
+
+Turn 12:
+   📍 POSITION - At S10 - Ships: 1 scout - Path: S10 → S11 → S12 → T12
+   🚀 MOVED - Advanced from S10 to T12
+   🏁 ARRIVED - Reached destination Scheat
+
+Turn 13:
+   📍 POSITION - At T12 - Ships: 1 scout - Path: T12 → T13 → S14 → R14
+   🚀 MOVED - Advanced from T12 to R14
+   🏁 ARRIVED - Reached destination Lupi
+
+Turn 14:
+   📍 POSITION - At R14 - Ships: 1 scout - Path: R14 → Q15 → P15 → O16
+   🚀 MOVED - Advanced from R14 to O16
+   🏁 ARRIVED - Reached destination Sadir
+
+⚠️  No activity recorded for turns: 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 9                                                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 scout
+Primary Target: Cephei at L3
+Created: Turn 1
+Status: active
+Total Events: 66
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 1 scout targeting Cephei at L3
+   📍 POSITION - At A1 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2 → I3 → J3 → K4 → L3
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2 → I3 → J3 → K4 → L3
+   🚀 MOVED - Advanced from C2 to F2
+
+Turn  3:
+   📍 POSITION - At F2 - Ships: 1 scout - Path: A1 → B1 → C2 → D2 → E2 → F2 → G2 → H2 → I3 → J3 → K4 → L3
+   🚀 MOVED - Advanced from F2 to I3
+
+Turn  4:
+   📍 POSITION - At I3 - Ships: 1 scout - Path: G5 → H4 → I5 → J4 → K4 → L3
+   🚀 MOVED - Advanced from I3 to J4
+
+Turn  5:
+   📍 POSITION - At J4 - Ships: 1 scout - Path: G5 → H4 → I5 → J4 → K4 → L3
+   🚀 MOVED - Advanced from J4 to L3
+   🏁 ARRIVED - Reached destination Cephei
+
+Turn  6:
+   📍 POSITION - At L3 - Ships: 1 scout - Path: G5 → H4 → I5 → J4 → K4 → L3
+
+Turn  7:
+   📍 POSITION - At L3 - Ships: 1 scout - Path: G5 → H4 → I5 → J4 → K4 → L3
+
+Turn  8:
+   📍 POSITION - At L3 - Ships: 1 scout - Path: G5 → H4 → I5 → J4 → K4 → L3
+
+Turn  9:
+   📍 POSITION - At G5 - Ships: 1 scout, 12 colony_transport - Path: G5 → E7
+
+Turn 10:
+   📍 POSITION - At L3 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → J11 → K12 → L12 → L13
+   🚀 MOVED - Advanced from L3 to I11
+
+Turn 11:
+   📍 POSITION - At I11 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → J11 → K12 → L12 → L13
+   🚀 MOVED - Advanced from I11 to L12
+
+Turn 12:
+   📍 POSITION - At L12 - Ships: 1 scout - Path: I8 → I9 → I10 → I11 → J11 → K12 → L12 → L13
+   🚀 MOVED - Advanced from L12 to L13
+   🏁 ARRIVED - Reached destination Lyrae
+
+Turn 13:
+   📍 POSITION - At L13 - Ships: 1 scout - Path: L13 → L14 → K15 → J15
+   🚀 MOVED - Advanced from L13 to J15
+   🏁 ARRIVED - Reached destination Pherda
+
+Turn 14:
+   📍 POSITION - At J15 - Ships: 1 scout - Path: J15 → J16 → J17 → I18 → H18
+   🚀 MOVED - Advanced from J15 to I18
+
+Turn 15:
+   📍 POSITION - At I18 - Ships: 1 scout - Path: O16 → P16 → P17 → P18
+   🚀 MOVED - Advanced from I18 to P18
+   🏁 ARRIVED - Reached destination Hydrae
+
+Turn 16:
+   📍 POSITION - At P18 - Ships: 1 scout - Path: O16 → P16 → P17 → P18
+
+Turn 17:
+   📍 POSITION - At P18 - Ships: 1 scout - Path: O16 → P16 → P17 → P18
+
+Turn 18:
+   📍 POSITION - At P18 - Ships: 1 scout - Path: B11 → C12 → C13 → B13 → B14 → B15 → B16 → B17 → B18
+   🚀 MOVED - Advanced from P18 to B14
+
+Turn 19:
+   📍 POSITION - At B14 - Ships: 1 scout - Path: B11 → C12 → C13 → B13 → B14 → B15 → B16 → B17 → B18
+   🚀 MOVED - Advanced from B14 to B18
+   🏁 ARRIVED - Reached destination Lalande
+
+Turn 20:
+   📍 POSITION - At B18 - Ships: 1 scout - Path: B11 → C12 → C13 → B13 → B14 → B15 → B16 → B17 → B18
+
+Turn 21:
+   📍 POSITION - At B18 - Ships: 1 scout - Path: B11 → C12 → C13 → B13 → B14 → B15 → B16 → B17 → B18
+
+Turn 22:
+   📍 POSITION - At B18 - Ships: 1 scout - Path: Q8 → Q9 → Q10 → P10 → O11 → O12 → O13
+   🚀 MOVED - Advanced from B18 to P10
+
+Turn 23:
+   📍 POSITION - At P10 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+   🚀 MOVED - Advanced from P10 to O13
+   🏁 ARRIVED - Reached destination Lacalle
+
+Turn 24:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 25:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 26:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 27:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 28:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 29:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 30:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 31:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 32:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 33:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 34:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 35:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 36:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 37:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 38:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 39:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 40:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 41:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 42:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 43:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+Turn 44:
+   📍 POSITION - At O13 - Ships: 1 scout - Path: L13 → M13 → N13 → O13
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 10                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 35 colony transports + 4 corvette escorts
+Primary Target: colonize Canis at G5
+Created: Turn 1
+Status: active
+Total Events: 61
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn  1:
+   🏗️  CREATED - Created with 35 colony transports + 4 corvette escorts targeting colonize Canis at G5
+   📍 POSITION - At A1 - Ships: 35 colony_transport, 4 corvette - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from A1 to C2
+
+Turn  2:
+   📍 POSITION - At C2 - Ships: 35 colony_transport, 4 corvette - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from C2 to E4
+
+Turn  3:
+   📍 POSITION - At E4 - Ships: 35 colony_transport, 4 corvette - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+   🚀 MOVED - Advanced from E4 to G5
+   🏁 ARRIVED - Reached destination Canis
+
+Turn  4:
+   📍 POSITION - At G5 - Ships: 4 corvette - Path: A1 → B1 → C2 → D2 → E3 → E4 → F4 → G5
+
+Turn  5:
+   📍 POSITION - At G5 - Ships: 4 corvette, 13 colony_transport - Path: G5 → H2
+   🚀 MOVED - Advanced from G5 to H2
+   🏁 ARRIVED - Reached destination H2
+
+Turn  6:
+   📍 POSITION - At H2 - Ships: 4 corvette - Path: G5 → H2
+
+Turn  7:
+   📍 POSITION - At H2 - Ships: 4 corvette - Path: G5 → H2
+
+Turn  8:
+   📍 POSITION - At H2 - Ships: 4 corvette - Path: G5 → H2
+
+Turn  9:
+   📍 POSITION - At H2 - Ships: 4 corvette, 5 colony_transport - Path: H2 → I8
+   🚀 MOVED - Advanced from H2 to I8
+   🏁 ARRIVED - Reached destination I8
+
+Turn 10:
+   📍 POSITION - At I8 - Ships: 4 corvette - Path: H2 → I8
+
+Turn 11:
+   📍 POSITION - At I8 - Ships: 4 corvette - Path: H2 → I8
+
+Turn 12:
+   📍 POSITION - At I8 - Ships: 4 corvette - Path: H2 → I8
+
+Turn 13:
+   📍 POSITION - At G5 - Ships: 4 corvette, 14 colony_transport - Path: G5 → I10
+
+Turn 14:
+   📍 POSITION - At I8 - Ships: 4 corvette - Path: G5 → I10
+   🚀 MOVED - Advanced from I8 to I10
+   🏁 ARRIVED - Reached destination I10
+
+Turn 15:
+   📍 POSITION - At I10 - Ships: 4 corvette - Path: G5 → I10
+
+Turn 16:
+   📍 POSITION - At I10 - Ships: 4 corvette - Path: G5 → I10
+
+Turn 17:
+   📍 POSITION - At I10 - Ships: 4 corvette - Path: G5 → I10
+
+Turn 18:
+   📍 POSITION - At I10 - Ships: 4 corvette - Path: L3 → M3 → N3 → O4 → P3 → Q4 → R3 → S4 → T4
+   🚀 MOVED - Advanced from I10 to P3
+
+Turn 19:
+   📍 POSITION - At P3 - Ships: 4 corvette - Path: L3 → M3 → N3 → O4 → P3 → Q4 → R3 → S4 → T4
+   🚀 MOVED - Advanced from P3 to T4
+   🏁 ARRIVED - Reached destination Antares
+
+Turn 20:
+   📍 POSITION - At T4 - Ships: 4 corvette - Path: L3 → M3 → N3 → O4 → P3 → Q4 → R3 → S4 → T4
+
+Turn 21:
+   📍 POSITION - At T4 - Ships: 4 corvette - Path: L3 → M3 → N3 → O4 → P3 → Q4 → R3 → S4 → T4
+
+Turn 22:
+   📍 POSITION - At T4 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+   🚀 MOVED - Advanced from T4 to U11
+
+Turn 23:
+   📍 POSITION - At U11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+   🚀 MOVED - Advanced from U11 to W11
+   🏁 ARRIVED - Reached destination Mirach
+
+Turn 24:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 25:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 26:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 27:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 28:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 29:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 30:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 31:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 32:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 33:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 34:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 35:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 36:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 37:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 38:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 39:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 40:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 41:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 42:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 43:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+Turn 44:
+   📍 POSITION - At W11 - Ships: 4 corvette - Path: P10 → Q10 → R10 → S11 → T10 → U11 → V11 → W11
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 11                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 5 colony_transport
+Status: active
+Total Events: 6
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 13:
+   📍 POSITION - At H2 - Ships: 5 colony_transport - Path: H2 → E7
+   🚀 MOVED - Advanced from H2 to E7
+   🏁 ARRIVED - Reached destination E7
+
+Turn 17:
+   📍 POSITION - At G5 - Ships: 17 colony_transport - Path: G5 → I10
+   🚀 MOVED - Advanced from G5 to I10
+   🏁 ARRIVED - Reached destination I10
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 12                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 9
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 13:
+   📍 POSITION - At I8 - Ships: 4 colony_transport - Path: I8 → F9
+   🚀 MOVED - Advanced from I8 to F9
+   🏁 ARRIVED - Reached destination F9
+
+Turn 17:
+   📍 POSITION - At H2 - Ships: 4 colony_transport - Path: H2 → B11
+   🚀 MOVED - Advanced from H2 to B11
+   🏁 ARRIVED - Reached destination B11
+
+Turn 21:
+   📍 POSITION - At G5 - Ships: 16 colony_transport - Path: G5 → O4
+   🚀 MOVED - Advanced from G5 to O4
+   🏁 ARRIVED - Reached destination O4
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 13                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 1 colony_transport
+Status: active
+Total Events: 9
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 17:
+   📍 POSITION - At I8 - Ships: 1 colony_transport - Path: I8 → L3
+   🚀 MOVED - Advanced from I8 to L3
+   🏁 ARRIVED - Reached destination L3
+
+Turn 21:
+   📍 POSITION - At H2 - Ships: 4 colony_transport - Path: H2 → Q8
+   🚀 MOVED - Advanced from H2 to Q8
+   🏁 ARRIVED - Reached destination Q8
+
+Turn 25:
+   📍 POSITION - At G5 - Ships: 16 colony_transport - Path: G5 → R14
+   🚀 MOVED - Advanced from G5 to R14
+   🏁 ARRIVED - Reached destination R14
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23, 24, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 14                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 6
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 17:
+   📍 POSITION - At E7 - Ships: 4 colony_transport - Path: E7 → N6
+   🚀 MOVED - Advanced from E7 to N6
+   🏁 ARRIVED - Reached destination N6
+
+Turn 21:
+   📍 POSITION - At E7 - Ships: 1 colony_transport - Path: E7 → P10
+   🚀 MOVED - Advanced from E7 to P10
+   🏁 ARRIVED - Reached destination P10
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 15                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 6
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 17:
+   📍 POSITION - At F9 - Ships: 4 colony_transport - Path: F9 → N8
+   🚀 MOVED - Advanced from F9 to N8
+   🏁 ARRIVED - Reached destination N8
+
+Turn 21:
+   📍 POSITION - At I10 - Ships: 4 colony_transport - Path: I10 → Q11
+   🚀 MOVED - Advanced from I10 to Q11
+   🏁 ARRIVED - Reached destination Q11
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 16                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 3
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 21:
+   📍 POSITION - At B11 - Ships: 4 colony_transport - Path: B11 → S10
+   🚀 MOVED - Advanced from B11 to S10
+   🏁 ARRIVED - Reached destination S10
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 17                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 3
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 21:
+   📍 POSITION - At N6 - Ships: 4 colony_transport - Path: N6 → L13
+   🚀 MOVED - Advanced from N6 to L13
+   🏁 ARRIVED - Reached destination L13
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║ TASKFORCE 18                                                                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Initial Composition: 4 colony_transport
+Status: active
+Total Events: 3
+
+COMPLETE MOVEMENT HISTORY (ALL TURNS):
+------------------------------------------------------------
+
+Turn 21:
+   📍 POSITION - At N8 - Ships: 4 colony_transport - Path: N8 → Q2
+   🚀 MOVED - Advanced from N8 to Q2
+   🏁 ARRIVED - Reached destination Q2
+
+⚠️  No activity recorded for turns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44
+
+────────────────────────────────────────────────────────────────────────────────
+

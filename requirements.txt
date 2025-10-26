@@ -1,0 +1,12 @@
+# Stellar Conquest Game Simulator
+# Requirements for running the Stellar Conquest board game simulator
+
+# Core dependencies for map generation and visualization
+matplotlib>=3.5.0
+numpy>=1.21.0
+
+# Optional: For better SVG rendering quality
+# pillow>=9.0.0
+
+# Note: All other dependencies (dataclasses, typing, enum, etc.) are part of Python's standard library
+# Minimum Python version: 3.7+ (for dataclasses)

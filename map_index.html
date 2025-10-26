@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stellar Conquest - 44-Turn Complete Campaign Maps</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1400px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+        .map-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-top: 20px; }
+        .map-item { border: 1px solid #ddd; border-radius: 8px; overflow: hidden; background: white; }
+        .map-header { background: #333; color: white; padding: 10px; font-weight: bold; }
+        .map-content { padding: 10px; }
+        .map-content img { width: 100%; height: auto; border: 1px solid #eee; }
+        h1 { color: #333; text-align: center; }
+        .summary { background: #e7f3ff; padding: 15px; border-radius: 5px; margin: 20px 0; }
+        .production-turn { background: #ffe6e6; }
+        .exploration-turn { background: #e6ffe6; }
+        .regular-turn { background: #f9f9f9; }
+        .turn-type { display: inline-block; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-left: 10px; }
+        .production { background: #ff9999; color: white; }
+        .exploration { background: #99ff99; color: #006600; }
+        .movement { background: #9999ff; color: white; }
+        .combat { background: #ff6600; color: white; }
+        .colonization { background: #9966ff; color: white; }
+        .phase-section { margin: 30px 0; }
+        .phase-title { font-size: 18px; font-weight: bold; color: #333; border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-bottom: 15px; }
+
+        /* Print styles for 4 maps per page in landscape letter mode */
+        @media print {
+            @page {
+                size: letter landscape;
+                margin: 0.5in;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+
+            .container {
+                max-width: 85%;
+                margin: 0;
+                padding: 0;
+                background: white;
+            }
+
+            /* Hide title and summaries when printing */
+            h1, .summary, .phase-title {
+                display: none;
+            }
+
+            .phase-section {
+                margin: 0;
+                padding: 0;
+                page-break-inside: auto;
+            }
+
+            /* 2x2 grid layout for 4 maps per page */
+            .map-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.15in;
+                margin: 0;
+                page-break-inside: auto;
+            }
+
+            .map-item {
+                border: 1px solid #333;
+                border-radius: 0;
+                background: white;
+                page-break-inside: avoid;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                max-height: 4.75in; /* Half of usable landscape height minus gap */
+            }
+
+            /* Page break after every 4th map (every 2 rows in 2-column grid) */
+            .map-item:nth-child(4n) {
+                page-break-after: always;
+            }
+
+            /* Prevent page break after the very last map */
+            .map-item:last-child {
+                page-break-after: auto;
+            }
+
+            .map-header {
+                background: white;
+                color: black;
+                padding: 4px 6px;
+                font-weight: bold;
+                font-size: 9px;
+                border-bottom: 1px solid #333;
+                flex-shrink: 0;
+            }
+
+            .turn-type {
+                display: none; /* Hide turn type badges in print */
+            }
+
+            .map-content {
+                padding: 4px;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .map-content img {
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+                object-fit: contain;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌌 Stellar Conquest - Complete 44-Turn Campaign</h1>
+        
+        <div class="summary">
+            <h3>📊 Extended Campaign Summary</h3>
+            <p><strong>Scenario:</strong> Four players (Admiral Nova, General Vega, Captain Rex, Commander Luna) explore and colonize the galaxy over 44 complete turns - the full official Stellar Conquest campaign length.</p>
+            <p><strong>Features:</strong> Enhanced map visualization showing task force movements, star discoveries, combat encounters, emigration missions, and eleven complete production cycles.</p>
+            <p><strong>Map Types:</strong> Complete turn maps showing all players, plus individual player range maps showing command post coverage.</p>
+            <p><strong>Campaign Phases:</strong></p>
+            <ul>
+                <li><strong>Phase I (Turns 1-8):</strong> Initial exploration, first star discoveries, and initial colony establishment</li>
+                <li><strong>Phase II (Turns 9-16):</strong> Territorial expansion, first contacts, and early combat encounters</li>
+                <li><strong>Phase III (Turns 17-24):</strong> Mature colonies, emigration missions, and strategic warfare</li>
+                <li><strong>Phase IV (Turns 25-32):</strong> Advanced technologies, major fleet buildups, and territorial conflicts</li>
+                <li><strong>Phase V (Turns 33-40):</strong> Late-game expansion, full-scale wars, and empire consolidation</li>
+                <li><strong>Phase VI (Turns 41-44):</strong> Final expansion, ultimate conflicts, and campaign conclusion</li>
+            </ul>
+            <p><strong>Production Turns:</strong> Turns 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44 feature simultaneous production for all players with population growth, industrial expansion, emigration missions, and technology research.</p>
+        </div>
+        
+        <!-- Phase I: Early Exploration (Turns 0-8) -->
+        <div class="phase-section">
+            <div class="phase-title">🚀 Phase I: Early Exploration & First Colonies (Turns 0-8)</div>
+            <div class="map-grid">
+                <!-- Initial Setup -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Initial Setup - All players at entry hexes <span class="turn-type movement">Setup</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_0_map.svg" alt="Turn 0 Initial Setup" />
+                    </div>
+                </div>
+
+                <!-- Turn 1 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 1 Complete - First movements toward target stars <span class="turn-type movement">Movement</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_1_map.svg" alt="Turn 1 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 2 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 2 Complete - Task force deployment and star approach <span class="turn-type exploration">Exploration</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_2_map.svg" alt="Turn 2 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 3 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 3 Complete - First star discoveries and planet identification <span class="turn-type exploration">Discovery</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_3_map.svg" alt="Turn 3 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 4 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 4 Complete - FIRST PRODUCTION TURN - Colony establishment <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_4_map.svg" alt="Turn 4 Production" />
+                    </div>
+                </div>
+
+                <!-- Turn 5 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 5 Complete - Post-production expansion and colony growth <span class="turn-type colonization">Colonization</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_5_map.svg" alt="Turn 5 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 6 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 6 Complete - Territorial boundaries forming <span class="turn-type movement">Territory</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_6_map.svg" alt="Turn 6 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 7 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 7 Complete - First enemy encounters and strategic positioning <span class="turn-type combat">Contact</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_7_map.svg" alt="Turn 7 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 8 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 8 Complete - SECOND PRODUCTION TURN - Fleet expansion <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_8_map.svg" alt="Turn 8 Production" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase II: Territorial Expansion (Turns 9-16) -->
+        <div class="phase-section">
+            <div class="phase-title">🏴 Phase II: Territorial Expansion & First Contacts (Turns 9-16)</div>
+            <div class="map-grid">
+                <!-- Turn 9 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 9 Complete - Mature colonies and emigration planning <span class="turn-type colonization">Emigration</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_9_map.svg" alt="Turn 9 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 10 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 10 Complete - Strategic positioning and resource competition <span class="turn-type combat">Strategy</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_10_map.svg" alt="Turn 10 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 11 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 11 Complete - Territorial conflicts and alliance formation <span class="turn-type combat">Conflict</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_11_map.svg" alt="Turn 11 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 12 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 12 Complete - THIRD PRODUCTION TURN - Technology research <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_12_map.svg" alt="Turn 12 Production" />
+                    </div>
+                </div>
+
+                <!-- Turn 13 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 13 Complete - Advanced technologies and fleet modernization <span class="turn-type movement">Tech</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_13_map.svg" alt="Turn 13 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 14 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 14 Complete - Major fleet buildups and strategic repositioning <span class="turn-type combat">Buildup</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_14_map.svg" alt="Turn 14 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 15 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 15 Complete - Pre-war positioning and diplomatic tensions <span class="turn-type combat">Tension</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_15_map.svg" alt="Turn 15 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 16 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 16 Complete - FOURTH PRODUCTION TURN - War preparations <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_16_map.svg" alt="Turn 16 Production" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase III: 17 - 24 -->
+        <div class="phase-section">
+            <div class="phase-title">🏛️ Phase III: Mature Colonies & Strategic Warfare (Turns 17-24)</div>
+            <div class="map-grid">
+                <!-- Turn 17 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 17 Complete - Full-scale conflicts and territorial wars <span class="turn-type war">War</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_17_map.svg" alt="Turn 17 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 18 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 18 Complete - Empire consolidation and final expansions <span class="turn-type empire">Empire</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_18_map.svg" alt="Turn 18 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 19 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 19 Complete - Final territorial struggles and ultimate conflicts <span class="turn-type final war">Final War</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_19_map.svg" alt="Turn 19 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 20 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 20 Complete - FIFTH PRODUCTION TURN - Mid-campaign expansion <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_20_map.svg" alt="Turn 20 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 21 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 21 Complete - Advanced fleet operations and strategic positioning <span class="turn-type advanced">Advanced</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_21_map.svg" alt="Turn 21 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 22 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 22 Complete - Major territorial campaigns and empire expansion <span class="turn-type campaign">Campaign</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_22_map.svg" alt="Turn 22 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 23 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 23 Complete - Strategic warfare and alliance formations <span class="turn-type alliance">Alliance</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_23_map.svg" alt="Turn 23 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 24 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 24 Complete - SIXTH PRODUCTION TURN - Advanced technologies <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_24_map.svg" alt="Turn 24 Complete" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase IV: 25 - 32 -->
+        <div class="phase-section">
+            <div class="phase-title">🔬 Phase IV: Advanced Technologies & Major Conflicts (Turns 25-32)</div>
+            <div class="map-grid">
+                <!-- Turn 25 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 25 Complete - Technological breakthroughs and fleet modernization <span class="turn-type tech">Tech</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_25_map.svg" alt="Turn 25 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 26 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 26 Complete - Advanced combat systems and strategic deployment <span class="turn-type advanced combat">Advanced Combat</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_26_map.svg" alt="Turn 26 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 27 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 27 Complete - Imperial expansion and territorial consolidation <span class="turn-type imperial">Imperial</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_27_map.svg" alt="Turn 27 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 28 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 28 Complete - SEVENTH PRODUCTION TURN - Major industrial expansion <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_28_map.svg" alt="Turn 28 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 29 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 29 Complete - Large-scale military operations and campaigns <span class="turn-type military">Military</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_29_map.svg" alt="Turn 29 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 30 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 30 Complete - Strategic resource control and territorial domination <span class="turn-type resources">Resources</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_30_map.svg" alt="Turn 30 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 31 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 31 Complete - Advanced warfare and technological superiority <span class="turn-type superiority">Superiority</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_31_map.svg" alt="Turn 31 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 32 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 32 Complete - EIGHTH PRODUCTION TURN - Peak industrial capacity <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_32_map.svg" alt="Turn 32 Complete" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase V: 33 - 40 -->
+        <div class="phase-section">
+            <div class="phase-title">⚔️ Phase V: Late-Game Wars & Empire Consolidation (Turns 33-40)</div>
+            <div class="map-grid">
+                <!-- Turn 33 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 33 Complete - Late-game territorial expansion and empire building <span class="turn-type empire">Empire</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_33_map.svg" alt="Turn 33 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 34 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 34 Complete - Advanced strategic operations and final expansion <span class="turn-type strategic">Strategic</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_34_map.svg" alt="Turn 34 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 35 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 35 Complete - Ultimate technological advancement and fleet supremacy <span class="turn-type ultimate">Ultimate</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_35_map.svg" alt="Turn 35 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 36 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 36 Complete - NINTH PRODUCTION TURN - Advanced civilization <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_36_map.svg" alt="Turn 36 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 37 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 37 Complete - Galactic dominance and territorial control <span class="turn-type dominance">Dominance</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_37_map.svg" alt="Turn 37 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 38 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 38 Complete - Final territorial conflicts and ultimate warfare <span class="turn-type ultimate war">Ultimate War</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_38_map.svg" alt="Turn 38 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 39 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 39 Complete - Peak civilization and technological mastery <span class="turn-type peak">Peak</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_39_map.svg" alt="Turn 39 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 40 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 40 Complete - TENTH PRODUCTION TURN - Civilization pinnacle <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_40_map.svg" alt="Turn 40 Complete" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Phase VI: 41 - 44 -->
+        <div class="phase-section">
+            <div class="phase-title">🏆 Phase VI: Final Expansion & Campaign Conclusion (Turns 41-44)</div>
+            <div class="map-grid">
+                <!-- Turn 41 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 41 Complete - Final expansion and ultimate galactic conquest <span class="turn-type final">Final</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_41_map.svg" alt="Turn 41 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 42 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 42 Complete - Campaign conclusion preparation and final strategies <span class="turn-type conclusion">Conclusion</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_42_map.svg" alt="Turn 42 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 43 -->
+                <div class="map-item regular-turn">
+                    <div class="map-header">Turn 43 Complete - Ultimate conflicts and final territorial struggles <span class="turn-type ultimate">Ultimate</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_43_map.svg" alt="Turn 43 Complete" />
+                    </div>
+                </div>
+
+                <!-- Turn 44 -->
+                <div class="map-item production-turn">
+                    <div class="map-header">Turn 44 Complete - FINAL PRODUCTION TURN - Campaign conclusion <span class="turn-type production">Production</span></div>
+                    <div class="map-content">
+                        <img src="output/maps/enhanced_turn_44_map.svg" alt="Turn 44 Complete" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h3>🎯 Campaign Features</h3>
+            <ul>
+                <li><strong>Maps:</strong> 45 complete turn maps (turns 0-44) showing comprehensive game state throughout the entire campaign</li>
+                <li><strong>Production Cycles:</strong> 11 production turns (4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44) with population growth and emigration</li>
+                <li><strong>Combat System:</strong> Full implementation of ship combat rules and enemy interactions</li>
+                <li><strong>Emigration:</strong> Advanced colonization missions with task force creation</li>
+                <li><strong>Technologies:</strong> Research progression and technological advancement</li>
+                <li><strong>Intelligence System:</strong> Enemy activity tracking and strategic intelligence reports</li>
+                <li><strong>Visualization:</strong> High-resolution SVG maps with task force tracking and range displays</li>
+            </ul>
+            
+            <p><strong>Technical Details:</strong></p>
+            <ul>
+                <li><strong>Players:</strong> 4 AI players with different strategies (Expansionist, Warlord, Technophile, Balanced)</li>
+                <li><strong>Campaign Length:</strong> Full 44-turn official Stellar Conquest campaign</li>
+                <li><strong>Map Format:</strong> SVG files optimized for web display and scalability</li>
+                <li><strong>Resolution:</strong> High-quality maps suitable for detailed analysis</li>
+                <li><strong>File Structure:</strong> All maps stored in output/maps/ directory</li>
+                <li><strong>Game Phases:</strong> Six distinct campaign phases from early exploration to final conquest</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

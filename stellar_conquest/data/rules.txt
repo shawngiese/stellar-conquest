@@ -1,0 +1,530 @@
+1.0 INTRODUCTION  
+At the start of play, four alien societies are poised to invade a large and, hitherto, Unknown section of the galaxy. Its recent discovery has invoked much speculation among these civilizations over its suitability for settlement and exploitation. Detailed studies show, however. That it’s relative youth when compared to the rest of the galaxy promises an abundance of habitable planets and mineral deposits without the threat of an indigenous society advanced to a sufficient level to defend it. Each player accepts the command of Captain of the expeditionary fleet of one of these societies. HIS mission is to gain control of most habitable planets for his society. STELLAR CONQUEST can be played by two or three players though it is best suited for four players.  
+ 
+2.0 DESCRIPTION OF PLAY  
+Each starting fleet is composed of scouts, corvette warships, and colony transports carrying millions of colonists sent to settle these new worlds. A player's first objective is to get his colonists onto one or more habitable planets before the first production turn (after the fourth turn of movement), While in space, his populations are useless. Once settled, however, they can begin to Increase in numbers and produce more equipment. From this base, a player can send out new colonists to settle other planets and start new industrial bases The speed and efficiency of this growth will go a long way toward determining who will control the greatest number of habitable planets.
+
+Before the colonists can be settled, planets need to be discovered. All spaceships can participate in exploration though the scouts are best suited for the job. Discovery is accomplished by moving a spaceship into a hexagon containing a Star and surviving any unknown dangers present there. A player can then draw a star card corresponding to the star’s color to learn what planets are in orbit It is useful to know that the habitable planets are more likely to be found around yellow stars than around any of the other colored stars. Even after colonies are established, a player should continue searching for new habitable planets because eventually, he will need to occupy them or, at the very least, deny occupation to the other players.
+
+Production is the most interesting aspect of the game. At the conclusion of every fourth turn, Players determine their growth and industry for the previous quarter. Each colony on a Terran planet grows one additional million for every 5 million colonists, and each colony on a Sub -Terran planet grows one additional million for every 10 million colonists. The barren and Minimal – Terran are considered to inhospitable to encourage growth. All colonies can then begin to produce. Each one million population contributes one industrial point and each factory built in a previous production turn produces one industrial point. These points can then be spent for new spaceships, advanced weapons, factories, or invested in research to develop new technologies. As the game progresses, a player can use these technologies to build even more efficient industry, colony defenses. And more powerful weapons.  
+
+The players Will Inevitably collide in their efforts to expand. Warships of different societies found in the same star hexagons must fight for complete control of the system or abandon it in retreat. In the beginning, only the small corvettes are available. As technology is acquired, more powerful fighters and death stars can be built and brought  into battle. When the game approaches the final  few turns, players will begin to build more and  more warships and defensive weaponry to back their bid for expansion and control . The player who has been most efficient in his production of warships and defensive weapons in these final battles will be the one most likely to collect the largest empire and win.  
+ 
+2.1 MAPBOARD  
+The field of play. The map depicts a small portion of the Milky Way Galaxy near our sun. (It has been abstracted and distorted to a degree for game purposes.) A grid of hexagons (called hexes for short) has been superimposed over the map to determine locations and regulate movement. Each hex contains its own individual code (called a grid-coordinate) to identify it. The distance across one hex, from Side to side, is ap proximately one-eighth light-year. In addition, there are several special features displayed on the map which require some explanation.
+
+Star Hexes: Fifty-four of the hexes contain colored star-like symbol that identifies the presence of a star. The color corresponds to the dominant visible wavelength emitted by the star.  
+
+COLOR           SURFACE TEMPERATURE  
+blue            50,000 K  
+white (green)   20,000 K  
+yellow          6,000 K  
+orange          5,000 K  
+red             3,500 K  
+ 
+Star hexes are important since They Signal the possible presence of planets needed for colonization. The game has been designed so that there are higher incidences of certain kinds of planets orbiting certain class stars, Chan others. For example, a player has the best chance of discovering habitable “Terran" planets orbiting the yellow stars whereas he has his best chance of finding mineral-rich planets orbiting the blue stars. In this way. The color becomes a very useful aid in exploration. Other trends are present but we leave the challenge of their discovery to you.
+
+Gas / Dust Cloud: There are seven distinct Interstellar gas and dust clouds present on the map Each is Identified by a white supple pattern covering several hexes and formed in the of a cloud. Every hex that contains part of a gas and dust cloud is considered a gas/dust cloud hex and will slow ship movement to the rate of one hex per turn.  
+
+Entry Hexes: There are four entry hexes, numbered one to four at the corners of the map board. They mark the first hexes to be entered by the player's starting fleets when first moving onto the board.
+
+
+2.2 STAR CARDS  
+There are five sets of these cards. Each set is distinguished by its own color which corresponds to one of the star colors. The first time a star is explored, a card of the same color is drawn to reveal what kind of planets orbit it.  
+ 
+It is not necessary to retain the orbit number of a planet in order to play the game. It serves no purpose other than to colorfully introduce the different planets on the cards. 
+
+Mineral-rich planets double the productivity of any industry placed thereon.  
+ 
+2.3  STARSHIP COUNTERS AND MARKERS  
+There are exactly 20 ½ inch square counters provided to represent the various kinds of spaceships, task forces, and command posts needed for play. These are the playing pieces. They have been divided by color into four sets. Each set is identical to the others in both number and composition. After the pieces have been punched out of the sheets that they come in, each player will select his color set to use in the game. He will use these and only these playing pieces.
+
+Printed on each counter is a picture to identify it and often a number to indicate its size.  
+
+Scout: These starships are used primarily for exploring stars and scouting opposing fleets. They have no combat ability.  
+
+Colony Transport: Each colony transport exists just to carry one-million population through space. Once its passengers disembark onto a planet it disappears. Consequently, whenever a player wishes to transfer population from one planet to another, he must build new colony transports to carry them.  
+
+Corvette: A warship. Corvette can battle other spaceships and attack colonies.  
+
+Fighter: another kind of warship. Fighters are superior to Corvettes in combat.  
+
+Death Star: the most powerful kind of warship.  
+
+Task Force: Spaceships moving together can be placed into a single fleet (or task force). The actual ship pieces are removed from the map board and placed in a task force box on the player's Task Force Card. The task force marker for that box then is put onto the map board, and moved in their place.  
+
+Command Post: Until a player is able to develop Unlimited Ship Range , he may not move any of his ships, except scouts more than eight hexes from a command post. A player can place command posts in any stars hexes containing his colorized planets. 
+ 
+2.4 PLAYER RECORD SHEET  
+Each player receives and uses a Player Record Sheet. On it, he records research expenditures, colony and industry levels, and information that he collects from exploration. A sample sheet partially filled has provided at the  conclusion of these rules to use as a guide on to record data .
+ 
+2.4.1 TASK FORCE CARD  
+Each player receives one Task Force Card on  which to keep his spaceships currently in task  forces It also provides all of the charts and records used in play. 
+ 
+2.5 HOW TO WIN  
+1. Upon completion of turn 44, the game ends and a winner is determined. Each player awards himself 3 points for every Terran planet he controls and 1 point for every sub-Terran planet he controls. The player with the most points wins.
+
+2. A player considered in control of a planet  If he can comply with any one of the following four situations.
+
+    a. He has a colony on the planet (even if enemy spaceships are in the same star hex).  
+    b. He has conquered another's colony on planet and has a warship in its star hex.  
+    c. The planet is unoccupied but has a spaceship in its Stat hex.  
+    d. The planet is unoccupied, but he has another colonized planet in the same star hex and there are no enemy spaceships there. 
+
+3. Minimal Terran  and barren planets have no value toward victory.
+ 
+2.6 SETTING UP THE GAME  
+    1. The map board and put on a flat surface. Allow for additional room around the board for the placement of the Task Force Cards.
+    
+    2. Divide the Star Cards into their color sets, shuffle them, and then put them, face-down, into their spaces on the map board. 
+    
+    3. Determine the order in which the players will take turns during the gam e If no agreement can be reached, use the dice to set first player should near the corner of the board showing entry hex #1 as that is where his starting forces must enter. The second player sits by his entry hex 2 and so on.
+
+4. Beginning with the first player, give each player one Task Force Card, a Record Sheet, a pen or pencil, and a full set of counters in the color of his choice. A plentiful supply of scratch paper might also prove useful.  
+ 
+2.7 PREPARE FOR PLAY  
+    1. From his supply of counters, each player collects his starting fleet of spaceships consisting of:  
+        • 4 Scouts  
+        • 4 Corvettes  
+        • 35 colony transports (loaded with colonists)  
+    
+    2. Next, each player receives a bonus 25 industrial Points (IP’s for short) which he can use as an initial investment in research and / or for the purchase of spaceships to add to his starting fleet. He may buy or invest in the following items only – scout and corvette spaceships and level 1 items available from any of the three Research Charts. So long as he keeps within this list, he can use his Bonus IP’s as he wishes and can even divide them among several items. Prices are found on the Task Force Cards   
+
+3.0 GAME PLAY  
+ 
+3.1 SEQUENCE OF PLAY  
+    1. After all preparations are completed the game is ready to start. Players will continue to take their turns in the same order as when they up. When a player completes his turn, he should mark its passage on his Record Sheet. After all players have completed 44 turns. The game ends. And a winner is determined as explained in HOW TO WIN.
+
+    2. A turn, itself, is composed of several distinct activities which must be completed in the order presented below. Once a player begins a new activity in his turn , he cannot return to a previous activity until his next turn. When the player completes his final activity, his turn is over, and the next player then has turn.  
+
+    3. One final note – throughout these rules, references will be made to things friendly and enemy. Their meanings are simple enough. Anything that belongs to a player is friendly to him. Everything that doesn’t belong to him is his enemy.  
+ 
+3.2 SEQUENCE OF ACTIVITY  
+Turn Sequence of Activity  
+
+    1. Move any or all spaceships in your force.
+    2. Explore new stars.
+        a. Resolve any exploration risk.
+        b. Discover planets, enemy colonies, and enemy spaceships in the solar systems of successfully explored stars.  
+    3. Resolve combat with all enemy spaceships coexisting in the same star hex with your spaceships.
+    4. Resolve any attacks you wish to make against enemy colonies.  
+    5. Debark any colonists you wish onto friendly planets. 
+    6. Record the passage of one turn on your Record Sheet.
+    7. At the end of every fourth turn, all players will participate in a special production turn.  
+ 
+3.3 SPACESHIP MOVEMENT  
+    1. In his turn, a player may move as many of his own spaceships as he wishes (none, some, all).  
+    2. He must move his spaceship from hex to connected hex. He is not permitted to jump his ships over hexes.  
+    3. While moving a ship, he can change direction without cost or penalty.
+    4. He may move each of his spaceships up to the limit indicated by his ship speed.  
+    5. All ships begin with a speed of two hexes per turn. Every player can improve the speed of his ships, by investing in Ship Speed Research.  
+
+3.4 FIRST TURN ENTRY				
+    1. Each player will need to bring his starting fleet of spaceships onto the map board on his first move. He may only do so via his entry hex.
+    2. A player counts the entry hex as the first hex of movement for each spaceship as it enters the map board.  
+ 
+3.5 GAS / DUST CLOUDS  
+    1. A spaceship may enter a gas / dust cloud hex only if it begins its move for the turn in a hex next to the gas/dust cloud hex. If it starts farther away, it must first move next to the gas / dust cloud hex and then wait for its next turn to enter. Once the spaceship enters the gas / dust cloud hex, it can move no farther that turn.
+    2. A spaceship can move through gas / dust cloud hexes at a reduced speed of just one hex per turn.   
+    3. A spaceship leaving a gas / dust cloud at the start of its turn may move up to its full speed. 
+ 
+3.6 COMMAND POSTS  
+    1. Spaceships (except for the scouts) are not permitted to move more than 8 hexes from a friendly command post. Any of these spaceships that do move beyond the 8 hex range from a friendly command post are eliminated immediately.  
+    2. Command posts may be placed in any star hex containing a friendly colonized planet. They do not have to be placed on every friendly colonized planet nor must they be placed on any; however, if a player has no command post on the map board, he must trace his eight hex route through his entry hex to the board edge. The entry hex must be counted as part of the route. (There is considered to be a command post off the map board immediately adjacent to each entry hex.)  
+    3. Command posts are not permanent emplacements. If a colony is captured or abandoned, any command post there must be removed. They may be voluntarily removed or switched to other friendly planets at any time. Care should be taken where to place command posts since their placement signals the presence of a colony to one’s opponents.  
+    4. Once a player acquires Unlimited Ship Range through research, he is no longer restricted by the Command Posts and can with them forth with for the rest of the game.
+    5. Each player has been given what is considered an adequate supply of command post counters. He cannot use more than the amount provided to him. Command posts are never eliminated and can be re-used indefinitely.  
+    6. Scouts have no range restrictions and are not tied to command. They may travel anywhere on the map board.  
+ 
+3.7 SHIP COMMUNICATIONS  
+    1. In the beginning, a player is restricted to directing his spaceships only when they occupy or pass through a star hex (any star hex). Consequently, each spaceship must be given a specific star hex destination when it enters the board and each time it is ready to leave a star hex and that destination cannot he altered while the spaceship is traveling through hexes which don't contain a Star.
+    2. A player must move each of his spaceships to its destitution star hex in a direct manner; He must use a route which will reach the destination Star hex in the fewest hexes possible. He may, though route his spaceships around star hexes lying in their path order to avoid combat with enemy spaceships he may also route his spaceship ground cloud hexes to save time, but these are the only exceptions 
+    3. A spaceship which passes through a star hex while enroute to its destination may have a new star selected for it if so desired.   
+    4. A spaceship may never be given the star hex from which it last departed as a new destination   
+    5. There has been no approved method provided for recording spaceship destinations simply because monitoring opponent's destinations is during the game and it is worth to check up on them after the game. Each player is left to his own devices to decide how he wishes to remember what is heading where the most obvious method, writing destinations down on paper, has proven both tedious and distracting so is not recommended except, perhaps in tournament play. If memory needs a boost, try keeping all spaceships in task force and using the task force arrowhead on the counter as a pointer toward the destination.   
+    6. Once a player acquires Unlimited Ship Communications through research, he is no longer subject to directing his spaceships toward stars and can move them, instead, wherever he wishes without restriction . He is now able to direct his ships from all of the hexes on the map board.  
+ 
+3.8 SPACESHIP INTERACTION  
+    1. Every hex is capable of holding an unlimited number of spaceships. Because of this, players can operate large fleets anywhere on the map board.
+    2. Enemy spaceships are ignored everywhere outside of the star hexes as if they weren't there. A player may move his spaceships through these enemy-occupied hexes and even halt their move in them without causing any interaction. Scouting of and combat between spaceships can occur only in star hexes. 
+    3. Spaceships in star hexes do exert a presence. Whenever a spaceship enters a star hex already occupied by one or more enemy spaceships, it is forced to end its turn there (thereby losing whatever remains of its move). Later in the turn, combat will determine who will remain there.  
+    4. Many counters representing more than one spaceship have been Included to help manage large numbers of the same type of spaceship operating together. A player may exchange counters in play for others of the same type in his stock at any time so long as the actual number of spaceships remain the same.  
+        • For example, three scout counters each marked with a one in the same hex can exchanged for one scout counter marked with a number three. At a later time,  the single counter representing three scouts can be replaced by the three individual scout counters.
+    5. A player is limited by his supply of playing pieces (called his stock) to the number of spaceships he can put on the map board  6. Ships destroyed during the game are returned to the owner's stock and are immediately available for re-use. 
+
+3.9 TASK FORCE  
+    1. Players are not required always to move their spaceships individually, one by one, as often is the case in other published games of this genre. Players are also allowed to organize spaceships  into groups and move them together as a fleet. This makes moving large forces much easier.  
+    2. Task force markers have been included as a convenient method of Moving large fleets of spaceships. They also are useful in disguising the size of space fleets.  
+    3. Anytime during his turn, a player may replace with a task force marker one or of his spaceships occupying the same hex. He puts the spaceships on his Task Force Card in that task force's box. On the map board , the task force marker and moves for all of the spaceships in  this box. Ships in task force are still subject to the same rules of movement and combat.
+    4. A player may move his spaceships into or out of his task forces anytime during his move.  
+    5. A player is free to remove any of his task force markers from the map board at any time Just by replacing each with the spaceships it represents.
+    6. Players are not required to put their spaceships into task forces. Their use is purely voluntary. Players that do use them may not have more in play than have been provided in their counter set (15).  
+ 
+3.10 HIDDEN FORCES  
+    1. Secrecy plays an important role in the conduct of STELLAR CONQUEST. Ideally, each player should operate as an isolated entity in complete Ignorance of the activities of his only by physical Investigation should he be able to discover enemy dispositions. Total isolation is, of course, impractical. Certain precautions can be implemented, though, to make inadvertent discoveries more difficult.  
+    2. Record sheets are never open to inspection; all information recorded thereon is private until the game is over. All spaceships on the map board should be kept face-down or in task force. All spaceships on the task force cards should be kept either face -down or covered.  
+    3. Players are not required to reveal spaceship destinations. Players reveal their spaceships and colonies only to those who legally discover them during a movement or exploration activity. (The process of exploration is fully described in the next section.)  
+    4. For the sake of convenience, battles should be fought in front of all players even though third parties are made privy to secret information in the process. For the same reasons, permissible demands for information about spaceships passing through colonized star hexes should made aloud, even though the act would reveal the presence of the colony to all.  
+    5. For tournaments , agreement can be reached beforehand to communicate only in writing and to resolve both exploration risks and battles in private.  
+    6. The fact that command posts often reveal to one's enemies the locations of otherwise hidden colonies makes their exclusion preferable if at all possible. It is, therefore, recommended that the use of be discarded for Tournament play. Instead, each player may secretly trace his eight hex routes back to any of his colonies without the need to reveal their presence to his opponents. Of course, this necessitates honest behavior on the part of everyone since range violations cannot now be monitored.  
+ 
+3.11 EXPLORATION  
+    1. Only after a player has finished moving all of his spaceships that he wishes to move in his turn, may he start to explore star hexes. His spaceships conduct the actual explorations.  
+    2. A player explores for three reasons — to discover planets, identify enemy spaceships , and to locate enemy colonies. When searching for planets, he needs to explore only those star hexes that he has not already successfully explored . When searching for colonies and spaceships, he is free to explore and re -explore all the star hexes. He initiates the exploration of a star hex by moving at least one of his spaceships into the hex and stopping it there.
+    3. The scouts and colony transports, unarmed vessels, are vulnerable to un-foreseen dangers each  time they search an unexplored star hex by themselves. Therefore, every turn, before making any discoveries, a player must roll one die for each and every one of his scouts, colony transports unaccompanied by warships and occupying star hexes he has yet success fully explored for planets Every time a “1” is rolled the scout or colony transport in question is destroyed and removed from the map board. The warships (corvettes. fighters. and death stars) run no such risk and protect scouts and colony transports from exploratory dangers. After removing losses, the player can then discover planets, enemy colonies, and spaceships but only in those star hexes that still hold at least one of his spaceships.
+    4. To discover what planets (if any) are in a star hex, a player draws a Star Card that matches the color of the star. He must first record the card number on his record sheet map next to the star. This card will be associated with this particular star for the rest of the game. He also should record the planet information there, too. The player keeps the Star Card.
+    5. If the star explored has already been successfully explored by another, then he, naturally, would hold the Star Card associated with that star. In this case, the player does not draw a new card rather the correct Star Card from him, records the information, and gives it back.
+    6. All enemy colonies and  spaceships in star hexes occupied by the player's spaceships must be revealed to him, alone. The size of the colony, all of its defenses except planet shields, and factories are still kept secret at this time. If a colony has a planet shield that too must be told.  
+    7. A player may choose not to explore star hexes in order to protect his scouts and colony transports sitting there. Exploration is automatic. Once a star hex has been successfully explored  by a player, however, it no longer poses any threat to his scouts and colony transports.
+    8. All planets discovered orbiting a star are considered in the same hex with the star.
+    9. Spaceships may NOT  explore the star hexes they pass through during their move. They must stop to explore.
+    10. Any player may, if he wishes, examine spaceships entering or passing through a star hex occupied by at least one of his colonies.  
+
+ 
+4.0 COMBAT  
+ 
+4.1 SHIP COMBAT  
+    1. In his turn, after finishing his exploration, a player must attack enemy spaceships occupying  the same star hexes with his spaceships. He must continue to fight until such time that no star hex contains the spaceships of more than one player. He is considered the attacker for all of his combat.
+    2. Combat is fought in battles. Each battle is fought for control of a single star hex. Battles in different star hexes cannot be combined into larger battles. The attacker decides the order in which battles will be fought.  
+    3. At the start of each battle, both participants first inspect the other’s spaceships in the contested star hex. In the case where neither participant has any warships in star hex (only scouts and/or colony transports), the attacker immediately must retreat all of his spaceships out of the star hex into an adjacent hex of his opponent’s choosing.  
+    4. A battle for a star hex consists of an indeterminate number of barrage rounds fought until only side or the other voluntarily withdraws out of the star hex or is completely eliminated. In each barrage round, every warship simultaneously fires at a pre-selected enemy spaceship. Destroyed spaceships are removed after all combat fire for the round has been completed. If neither side has been completely eliminated, the attacker may then withdraw some or all of his spaceships to an adjacent hex of his opponent's choosing If he decides to keep any of his spaceships in the star hex the defender is given the same option If both decide to stay, another barrage round is fought. 
+    5. Barrage  fire is resolved in the following way:  
+        a. The attacker selects a target enemy spaceship for each one of his warships. Then the opponent does the same. A warship may be directed to fire at any enemy spaceship in the star hex, even one already targeted for attack by other warships of the force.  
+        b. The attacker resolves his combat fire first. He selects one of his warships and cross-indexes its type to that of its target spaceship on the Attack Table. This gives him a range of numbers. He, then, rolls one or two dice. If the result falls within this range, the target spaceship is destroyed.
+        For example, if a fighter is directed to attack a scout, an inspection of the Attack Table reveals that the player needs to roll a one through five with one die to destroy the scout. A roll of six would mean a miss. In another example, a corvette is directed to attack another corvette Only a die roll of one would cause the target corvette's destruction. Any other result would have no effect. In most cases only one die is needed for each warship's combat fire. However, when the die range is 10, two dice must rolled and the result must be 10 exactly to gain a kill. 
+        c. The attacker repeats step b. for every one of his warships until all have had a chance to fire. Then the opponent resolves all of his warship's combat fire (including those just destroyed by attacker’s fire) in the same way. Only after all warships of both sides have had a chance to fire, are destroyed spaceships removed from play.  
+    6. Ordinarily a warship can fire only once per round. However, any player who is able to acquire Improved Ship Weaponry via research gains a Special bonus in battle. Whenever one of his war ships misses its target spaceship, it can immediately fire again at the same spaceship one more time.  
+    7. A warship cannot change its target spaceship once the barrage round begins. Players often like to gang up several warships against one particular spaceship thereby improving the chances of destroying it. If, as often happens, a kill is obtained before all the warships have had a chance to fire, those that didn't fire lose the opportunity to do so for the rest of the barrage round.
+    8. A warship is never required to fire at the same spaceship it missed in a previous round. It may fire at the same or a different spaceship.
+    9. Scouts and colony transports are not warships and cannot attack. They can, however, be attacked.  
+    10. There is an unlikely but possible situation where both sides have eliminated all warships in battle but still retain scouts and colony transports in the same star hex. In this case, the attacker must withdraw all of his spaceships out of the star hex and into an adjacent hex of the opponent’s choosing. 
+    11. It is recommended, though not required, that both players temporarily move their spaceships to an open area off the map board to fight a battle. This makes directing and resolving combat fire between the spaceships much easier.   
+    12. When a player voluntarily withdraws his spaceships from battle, he can leave some to continue the fight. All ships retreating from the hex must be moved to an adjacent hex of the opponent’s choosing. A player can pick just one hex for all of his opponent's withdrawals in that battle.
+    13. Each spaceship withdrawn from battle must be given a new destination if one is required.  
+    14. Spaceships cannot hide on planets. A spaceship is always considered in space and vulnerable to attack. Only colony transports may land on planets and then only to debark their passengers, after which they immediately disappear and are returned to the player's stock.
+
+4.2 COLONY ATTACK AND CONQUEST  
+    1. As he proceeds with his turn, a player may, if he wishes, attack enemy colonies occupying the same star hexes with his warships. He cannot begin his attacks against colonies until he finishes all of his battles against enemy spaceships. Making attacks against colonies is never required; it is always a voluntary action.  
+    2. If the player plans to attack more than one enemy colony in different star hexes, he will decide the order of their resolution. He may attack in only one star hex at a time.  
+    3. Only after the player announces an attack against a colony must its owner reveal what missile bases are found thereon. The player, then, is required to fight at least one barrage round against the colony if, indeed, it does have missile defenses. Colonies once protected by a planet shield. cannot be attacked. They are unconquerable.  
+    4. A colony not defended by missile bases or a planet shield is conquered immediately without a fight when attacked. If it is defended by missile bases however, it can be conquered only after all its missile bases have been destroyed.
+    5. Combat against missile bases is conducted using the same method devised for resolving spaceship combat. Just substitute the missile bases or the defending spaceships. Retreats are not allowed in colony combat. Instead the attacker may call off his attack at the end of any barrage round if he so desires without penalty.  
+    6. If the attacker is able to destroy all of the missile bases of a colony while still keeping at least one warship in the same star hex, he has conquered the colony. The colony remains conquered only so long as he can keep at least one of his war ships in its star hex.  
+    7. The defender has the opportunity to destroy any or all of his colony's factories at the end of each barrage round that it remains unconquered. He would consider doing this only when the colony is in danger of falling into enemy hands.
+    8. If there are more than one colonized planet in the contested star hex, the attacker may attack them separately or together or alternate his attacks at will.  
+
+4.3 BESIEGED COLONIES  
+    1. An unconquered colony is considered to under siege if at least one enemy warship remains in its star hex.  
+    2. A besieged colony may not build any spaceships. Neither may it be used as a command post.
+    3. A besieged colony may build missile bases or a planet shield. It may also build factories. It may contribute toward research.  
+ 
+4.4  CONQUERED COLONIES  
+    1. Once conquered , a colony immediately comes under the control of its conqueror. The owner must provide the conqueror with all of its population and factory information. The populations of conquered colonies although now under the control of a new master still remain loyal to the original owner.  
+    2. A conquered colony cannot produce any i.p.'s for the conqueror in the first production turn following its conquest. For all subsequent production turns, however, for as long as it remains under that player's control, it will yield full production to him.  
+    3. A player may not mix his populations with conquered populations. He can make conquered populations migrate to new planets which are empty or contain other conquered colonies of the same color. Wherever they settle, their status as a conquered colony remains the same. When moving conquered populations, appropriately colored must be obtained from the original owner. They remain under the conqueror’s control so long as he keeps at least one warship with them.
+    4. Conquered colonies may not build missile bases or a planet shield. Conquered colonies may build spaceships for the conqueror. They may also contribute toward conqueror’s technology research.  
+    5. Conquered populations cannot increase in number nor are they allowed the bonus. Their numbers must remain the same.  
+    6. Whenever a hex containing a conquered colony or conquered colony transports is abandoned by all of the conqueror’s warships, for whatever reason, the conquered colony or transports revert  back to the control of the original owner. The colony is no longer considered conquered and may begin producing for him in the very next production turn.  
+    7. Another player can wrest control of a conquered colony by displacing the guarding warships in its star hex with at least one of his own. He becomes the new conqueror and must also wait one production turn before he can begin to use the colony's i.p. 's. He cannot take control of enemy colony transports but only attack them instead.
+    8. A conquered colony (or any colony, for that matter) emptied of all its population is considered abandoned and a new colony may be started on the same planet by any player. All factories left on abandoned colonies are considered destroyed.  
+    9. A player is permitted to destroy any or all of the factories in any or all of his conquered colonies at any time during his turn.  
+    10. A player is also permitted to destroy conquered populations anytime during his colony attack activity including the turn of conquest. Each warship that remains in the colony's star hex after conquest may remove population at the following rates:  
+        • Each  corvette can destroy 1 million population per turn
+        • Each  Fighter can destroy 3 million population per turn
+        • Each  Death Star  can destroy 5 million population per turn
+ 
+5.0 COLONIZATION  
+ 
+5.1 COLONIZING PLANETS  
+    1. After completing all attacks in his turn, a player may debark as many passengers from his surviving colony transports as he wishes. These populations may be placed on uninhabited planets to start new colonies or on planets with friendly colonies to increase their size. They may not be placed onto a planet holding enemy colonies.  
+    2. A colony transport may debark its passengers onto a planet in the star hex it occupies.  
+    3. A player cannot start colonies on barren planets until he acquires Controlled Environment Technology (C.E.T.). Even then. only the colony transports built during or after the acquisition of C.E.T. may debark colonists onto barren planets. Those in use at the time are excluded because they were already sent into space before C.E.T. could be installed.  
+    4. Each time a player starts a new colony, he should make a note of its host planet and its population on his player record sheet. While the colony remains in existence, this record should be maintained to indicate new gains and losses in population, factories, and missile bases. 
+    5. A player is permitted to have as many colonies as he is willing and able to start. If he runs out of space on his record sheet, he is allowed to continue his record on a new one.  
+    6. Only one colony may exist on a planet at a time. It must be emptied of all its population before another colony may be placed there.  
+    7. A colony may never have more Population than is allowed by its planet's capacity. Any excess found or put thereon is eliminated at the end of the turn. 
+ 
+5.2 COLONY TRANSPORTS  
+    1. Population is counted in millions and cannot be further divided. Each colony transport is able to carry just one million population. 
+    2. Once a colony transport’s passengers have debarked onto a planet, it must be removed from play.  
+    3. Every time a player wishes to move any of his population from one planet to another, he must build new colony transports in that planet's hex to carry them. The population is automatically loaded onto the colony transports.  
+    4. A player must use colony transports even when he wishes to transfer population from one planet to another in the same hex.  
+    5. As is the case with all construction, colony transports may be built only during a production turn. Consequently, these are the times that a player can prepare his populations for movement. He cannot build colony transports between production turns.  
+    6. Colony transports are never required to debark their passengers and can stay In space for the entire game if so desired  
+    7. Whenever a colony transport is destroyed, either by exploration or by combat, its one million passengers die with it.  
+
+6.0 PRODUCTION  
+ 
+6.1 PRODUCTION TURN  
+    1. At the conclusion of every complete fourth turn (that is, after all players have taken their fourth, eighth, twelfth, sixteenth, etc. turns) a special production turn is inserted. At this time all players simultaneously calculate the production and growth for each of their colonies during the last four turn period. They, then, use this industrial output to buy new equipment and to invest in research. They also prepare populations for emigration. All of this is done in secret.  
+    2. Each colony must be treated as a distinct production unit. A player must complete all the growth, industrial and emigration activities of one colony before he can proceed to those of another.  
+    3. All colonies contribute to their side's production, even those started in the previous turn.  
+    4. There are a total of ten production turns in the game. The one which would normally follow turn 44 is ignored and a winner is determined instead. 
+    5. The production turn activities of each and every colony are conducted in a step-by-step sequence as outlined below.  
+        a. determine  population growth 
+        b. calculate the of i.p.’s produced by the colony  
+        c. build colony transports for emigration 
+        d. spend i.p.’s on equipment and research  
+ 
+6.2 POPULATION GROWTH  
+    1. One million population is gained for every five million population present on a Terran planet.
+    2. One million population is gained for every ten million population present on a sub-Terran planet.
+    3. No population  increase is allowed on minimal-Terran  or barren planets.   
+
+    For example, a colony with a of thirty-nine million on a Terran planet gains seven million additional million; the same colony on a sub-Terran planet ga ins three million additional population; the colony gains increase in population if on a minimal-Terran or barren planet.
+
+    4. A colony's population can never exceed its host planet's capacity. Any excess must be placed on colony transports to emigrate elsewhere or be eliminated at the end of the production turn.  
+ 
+6.3 INDUSTRIAL OUTPUT  
+    1. A simple formula is utilized to calculate the i.p. output for a colony as follows. Each one million population in the colony, including population growth, provides 1 i.p. and each factory thereon produces 1 i.p.  
+
+    For example, a colony on a Terran planet with thirty million inhabitants and ten factories will first receive a population growth of six million, thereby increasing its size to thirty -six million inhabitants. They 36 i.p. 's. The ten factories will produce another 10 i.p.'s. The colony, then is able to generate a total amount of 46 i.p.'s for this production turn.  
+
+    2. Colonies on mineral -rich planets double the total amount of the industrial output. If the above-mentioned colony of thirty million inhabitants and ten factories were based on a minimal-Terran, mineral-rich planet, its output would be increased to 80 i.p.'s (30 i.p.'s for initial population plus 10 i.p.'s for zero population growth on a minimal-Terran planet plus 10 i.p.'s for ten factories, then doubled).  
+ 
+6.4 EMIGRATION  
+    1. Any or all of the inhabitants of a colony including those just gained can be moved off a planet.  
+    2. Each one million population to be moved requires one colony transport to carry them built at a cost of 1 i.p. from the colony's output.   
+    3. When placed in the colony's star hex. The colony transport is considered to be automatically loaded with one million population from the colony.  
+    4. A colony is able to generate additional population, termed a population bonus, above its normal population growth depending upon the size of its emigration.  
+    5. The population bonus is determined in the following  manner:  
+        a. The colony' s bonus limit is first calculated. It is the sum of its population growth for the turn plus three million population. For example, a Terran colony with twenty-seven million inhabitants would have a bonus five plus three or eight. A sub-Terran colony with thirty-nine million inhabitants would have a bonus of three plus three or six. 
+        b. For every three million population placed in colony transports up to its bonus limit, an additional one million population is gained.  
+    6. This population bonus must be emigrated to be kept; they cannot remain with the colony. Colony Transports must be purchased by the colony to carry them. Population bonus not immigrated is lost instead.  
+    7. Emigrants must be moved to a different planet. They cannot be returned by the same Transport later to the same colony.  
+ 
+6.5 INDUSTRIAL EXPENDITURES  
+    1. A colony can use whatever i.p.’s it has remaining after any colony transport purchases to buy new spaceships, factories, and defenses, and to invest in technological research. Prices for equipment are provided on the price schedule. Technological costs are found in the Research Tables.  
+    2. The colony owner may use the i.p.’s as he sees fit. 
+    3. A colony Cannot  combine with other colonies to buy items it could not afford on its own.  
+    4. Any number of colonies may contribute toward the same technological research. 
+    5. Most items cannot be bought until the colony’s owner has acquired the technology needed to build them. The colony transports, scouts, and corvettes can be purchased.  
+    6. A new technology can be paid for in one production turn or over several production turns. A player is allowed to use a technology in the same turn it is acquired.  
+    7. Each time a player invests in a new technology he should make a note of it on his record sheet. He is then able to maintain a running total of the i.p.’s put toward it until its price is met.   
+    8. i.p.’s must be used in the same turn they are generated, or they’re lost. They cannot be saved. We recommend that a colony’s leftover i.p.’s be invested in some kind of research.  
+    9. Newly built spaceships are placed in the producing colony’s star hex.  
+    10. Players should update their colony records to reflect new purchases of factories, missile bases, and planetary shields.  
+    11. A colony may hold any number of missile bases.  
+ 
+6.6 TECHNOLGY  
+    1. Technology is divided into three distinct classes: ship speed, weapons, and pure technology.  
+    2. A player may not invest in a second level technology until he has purchased at least one of the first level technologies in the same class. 
+    3. Examination of the Research Tables reveals that many of the technologies have two prices. A player may use the lower price only if he owns the perquisite technology mentioned.  
+    4. A player who acquires the technology to build a certain item does not buy that item, itself, just the ability to buy it.
+    For example, a player has paid 35 i.p.'s to obtain Fighter Ship Technology. He does not receive any fighter warships for  this price. His colonies have been given the ability, though, to build fighter warships at a cost of 20 i.p.'s apiece.
+    5. As an optional rule, consider letting missile bases use Improved Ship Weaponry along with the warships.   
+
+
+RESEARCH COSTS
+
+SHIP SPEED RESEARCH TABLE in CSV
+LEVEL, TITLE, DEVELOPMENT, COST WITH PREDECESSOR, NORMAL i.p. COST
+1, 3 Hex Speed, Every ship may move up to 3 hexes per turn, --, 15
+1, 4 Hex Speed, Every ship may move up to 4 hexes per turn, 30 with 3 hex speed, 40
+2, 5 Hey Speed, Every ship may move up to 5 hexes per turn, 40 with 4 hex speed, 55
+2, 6 Hex Speed, Every ship may move up to 6 hexes per turn, 50 with 5 hex speed, 65
+3, 7 Hex Speed, Every ship may move up to 7 hexes per turn, 60 with 6 hex speed, 75
+3, 8 Hex Speed, Every ship may move up to 8 hexes per turn, 70 with 7 hex speed, 80
+
+
+
+WEAPONS RESEARCH TABLE
+LEVEL: 1, TITLE: Missile Base, DESCRIPTION: Equivalent in strength to a corvette ship. Once the research cost has been paid in full missile bases may be placed on colonized planets at a cost of 4 i.p. per base. Once placed they cannot be moved., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST: 25
+LEVEL: 1, TITLE: Fighter Ship, DESCRIPTION: A more powerful type of warship. Once the research cost has been paid in full fighters may be built on colonized planets at a cost of 20 i.p. per fighter., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST: 35
+LEVEL: 2, TITLE: Advanced Missile Base, DESCRIPTION: Equivalent in strength to a fighter. Once the research cost has been paid in full advanced missile bases may be placed on colonized planets at a cost of 10 i.p. per base. Once placed they cannot be moved., COST WITH PREDECESSOR: 40 with Missile Base, NORMAL i.p. COST: 55
+LEVEL: 2, TITLE: Death Star, DESCRIPTION: The most powerful warship available. Once the research cost has been paid in full death stars may be built on colonized planets at a cost of 40 i.p. per death star., COST WITH PREDECESSOR: 75 with Fighter, NORMAL i.p. COST: 90
+LEVEL: 3, TITLE: Improved Ship Weaponry, DESCRIPTION: Allows every kind of warship the ability to fire two barrages per attach instead of the normal one., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST: 100
+LEVEL: 3, TITLE: Planet Shield, DESCRIPTION: Once the research cost has been paid in full planet shields may be installed on colonized planets at a cost of 30 i.p. per shield. It is not necessary to have more than one shield per planet. A shield protects its planet from all warship attacks., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST: 130
+
+
+
+TECHNOLOGICAL RESEARCH TABLE
+LEVEL: 1, TITLE: Controlled Environment Technology (C.E.T), DEVELOPMENT: Permits colonization of barren planets as if they were minimal terran., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST 25
+LEVEL: 1, TITLE: Industrial Technology, DEVELOPMENT: Once the research cost has been paid in full industrial technology allows the construction of factories on colonized planets at a cost of 4 i.p. per factory. No more than one LEVEL: factory may be built or operated on a planet for every one million population there., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST 25
+LEVEL: 2, TITLE: Improved Industrial Technology, DEVELOPMENT: Once the research cost has been paid in full improved industrial technology allows up to two factories to be built or operated per million population on the planet., COST WITH PREDECESSOR: 40 with Industrial Technology, NORMAL i.p. COST 55
+LEVEL: 2, TITLE: Unlimited Ship Range, DEVELOPMENT: Allows ships the ability to move anywhere on the game board without regard to the eight hex limit., COST WITH PREDECESSOR: 40 with a ship speed of 5 or more, NORMAL i.p. COST 60
+LEVEL: 3, TITLE: Unlimited Ship Communication, DEVELOPMENT: Allows a player to communicate with his ships on any hex on the mapboard. He may now move his ships at will and is not limited to altering their destinations only when they are in or passing through a star hex., COST WITH PREDECESSOR: not possible, NORMAL i.p. COST 70
+LEVEL: 3, TITLE: Robotic Industry, DEVELOPMENT: Once the research cost has been paid in full robotic technology allows any number of factories to be built on a colonized planet at a cost of 3 i.p. without regard to the size of the population., COST WITH PREDECESSOR: 85 with Industrial Technology, NORMAL i.p. COST 100
+
+
+
+PRICE SCHEDULE TABLE
+QUANTITY: 1, SHIP: Colony Transport, i.p. COST: 1
+QUANTITY: 1, SHIP: Scout, i.p. COST: 3
+QUANTITY: 2, SHIP: Scouts, i.p. COST: 5
+QUANTITY: 1, SHIP: Corvette, i.p. COST: 8
+QUANTITY: 1, SHIP: Fighter,  i.p. COST: 20
+QUANTITY: 1, SHIP: Death Star,  i.p. COST: 40
+QUANTITY: 1, SHIP: Factory, i.p. COST: 4
+QUANTITY: 1, SHIP: Robotic Factory, i.p. COST: 3
+QUANTITY: 1, SHIP: Missile Base, i.p. COST: 4
+QUANTITY: 1, SHIP: Advanced Missile Base,  i.p. COST: 10
+QUANTITY: 1, SHIP: Planet Shield,  i.p. COST: 30
+
+
+
+ATTACK TABLE 
+attacker: Scout,            cannot win vs Scout, cannot win vs Colony Transport, cannot win vs Corvette, cannot win vs Missile Base, cannot win vs Fighter, cannot win vs Advanced Missile Base, cannot win vs Death Star
+attacker: Colony Transport, cannot win vs Scout, cannot win vs Colony Transport, cannot win vs Corvette, cannot win vs Missile Base, cannot win vs Fighter, cannot win vs Advanced Missile Base, cannot win vs Death Star
+attacker: Corvette,         win vs Scout 1-4 on 1d6, win vs Colony Transport 1-4 on 1d6, win vs Corvette 1 on 1d6, win vs Missile Base 1 on 1d6, win vs Fighter 10 on 2d6, win vs Advanced Missile Base 10 on 2d6, no effect vs Death Star
+attacker: Missile Base,     win vs Scout 1-4 on 1d6, win vs Colony Transport 1-4 on 1d6, win vs Corvette 1 on 1d6, win vs Missile Base 1 on 1d6, win vs Fighter 10 on 2d6, win vs Advanced Missile Base 10 on 2d6, no effect vs Death Star
+attacker: Fighter,          win vs Scout 1-5 on 1d6, win vs Colony Transport 1-5 on 1d6, win vs Corvette 1-2 on 1d6, win vs Missile Base 1-2 on 1d6, win vs Fighter 1 on 1d6, win vs Advanced Missile Base 1 on 1d6, win vs Death Star 10 on 2d6
+attacker: Advanced Missile Base, win vs Scout 1-5 on 1d6, win vs Colony Transport 1-5 on 1d6, win vs Corvette 1-2 on 1d6, win vs vs Missile Base 1-2 on 1d6, win vs Fighter 1 on 1d6, win vs Advanced Missile Base 1 on 1d6, win vs Death Star 10 on 2d6
+attacker: Death Star,       automatic win vs Scout, automatic win vs Colony Transport, win vs Corvette 1-4 on 1d6, win vs Missile Base 1-4 on 1d6, win vs Fighter 1-3 on 1d6, win vs Advanced Missile Base 1-3 on 1d6, win vs Death Star 1-2 on 1d6
+
+
+
+STAR DATA TABLE in CSV
+
+LOCATION, COLOR, STAR NAME
+AA15, orange, Hamal
+AA19, yellow, Scorpii
+AA9, green, Wezen
+B11, blue, Sirius
+B18, red, Lalande
+BB5, yellow, Bootis
+CC12, yellow, Dubhe
+CC17, red, Barnard
+D13, red, Luyten
+D4, orange, Indi
+E17, yellow, Ceti
+E7, red, Kapetyn
+EE10 ,green, Polaris
+F9, yellow, Diphda
+G5, yellow, Canis
+H12, green, Eridani
+H18, red, Mira
+H2, red, Ophiuchi
+I10, red, Ross
+I16, orange, Rastaban
+I8, blue, Deneb
+J15, blue, Pherda
+L10, orange, Alphard
+L13, yellow, Lyrae
+L18, yellow, Alcor
+L3, red, Cephei
+L6, green, Mirfak
+N6, orange, Kochab
+N8, yellow, Capella
+O13, red, Lacalle
+O16, green, Sadir
+O4, yellow, Schedar
+P10, green, Canopus
+P18, orange, Hydrae
+Q11, yellow, Draconis
+Q20, blue, Zosca
+Q2, blue, Mizar
+Q8, red, Crucis
+R14, orange, Lupi
+R6, green, Caph
+S10, orange, Almach
+T12, red, Scheat
+T16, yellow, Aurigae
+T4, red, Antares
+U8, yellow, Spica
+V19, green, Procyon
+V2, yellow, Tauri
+W11, red, Mirach
+W13, yellow, Cygni
+X16, red, Kruger
+X5, orange, Arcturus
+X8, blue, Vega
+Y14, blue, Altair
+Y3, red, Wolf
+
+
+
+CLOUD DATA TABLE in CSV
+LOCATION
+A10, A11, A12, A13, B10, B11, B12, C11, I7, I8, I13, I14, J6, J7, J8, J12, J13, J14, K6, K7, K14, K15, K16, L5, L15, O1, O20, P1, P19, P20, Q1, Q2, Q20, R1, R2, R19, U6, V5, V6, V14, V15, W6, W7, W15, X6, X7, X8, X13, X14, Y12, Y13, Y14, DD7, EE8, EE9, EE11, FF8, FF9, FF10, FF11
+
+
+
+STAR CARDS TABLE in CSV
+Star Card Number, Spectral class, Planet Orbit1, Planet Type1, Max Population1, Metalization1, Planet Orbit2, Planet Type2, Max Population2, Metalization, Planet Orbit3, Planet Type3, Max Population3, Metalization
+1, blue, , , , , , , , , , , , 
+2, blue, , , , , , , , , , , , 
+3, blue, 3, barren, 10, mineral-rich, 4, sub-Terran, 20, , , , , 
+4, blue, 5, sub-Terran, 20, , , , , , , , , 
+5, blue, 3, minimal-Terran, 10, , 5, barren, 10, mineral-rich, , , , 
+6, blue, 4, barren, 10, mineral-rich, 6, minimal-Terran, 40, , , , , 
+7, blue, 4, minimal-Terran, 20, , 5, barren, 20, mineral-rich, , , , 
+8, blue, 3, barren, 10, , 5, minimal-Terran, 20, mineral-rich, , , , 
+9, blue, 4, minimal-Terran, 10, , 5, minimal-Terran, 40, mineral-rich, , , , 
+10, blue, 3, barren, 20, mineral-rich, , , , , , , , 
+11, blue, 6, barren, 20, mineral-rich, 7, barren, 10, mineral-rich, , , , 
+12, green, 4, Terran, 60, , 5, minimal-Terran, 10, , 6, barren, 20, 
+13, green, , , , , , , , , , , , 
+14, green, , , , , , , , , , , , 
+15, green, 4, sub-Terran, 20, , 5, Terran, 40, , , , , 
+16, green, 3, barren, 10, mineral-rich, 4, Terran, 60, , , , , 
+17, green, 4, sub-Terran, 40, , 5, BR, 20, , , , , 
+18, green, 4, barren, 10, mineral-rich, 5, sub-Terran, 60, , , , , 
+19, green, 3, barren, 20, mineral-rich, , , , , , , , 
+20, green, 2, barren, 10, , 3, sub-Terran, 40, mineral-rich, , , , 
+21, green, 3, minimal-Terran, 20, , 6, barren, 10, mineral-rich, , , , 
+22, green, 5, minimal-Terran, 40, , , , , , , , , 
+23, green, 4, barren, 20, , , , , , , , , 
+24, yellow, 3, Terran, 80, , 4, sub-Terran, 40, , , , , 
+25, yellow, 3, Terran, 80, , , , , , , , , 
+26, yellow, 5, Terran, 60, , , , , , , , , 
+27, yellow, 3, minimal-Terran, 40, , 4, barren, 20, mineral-rich, , , , 
+28, yellow, 3, Terran, 80, , , , , , , , , 
+29, yellow, 3, Terran, 60, , , , , , , , , 
+30, yellow, 5, Terran, 60, , , , , , , , , 
+31, yellow, 2, minimal-Terran, 40, , , , , , , , , 
+32, yellow, 4, Terran, 80, , 5, barren, 10, , , , , 
+33, yellow, 3, Terran, 60, , , , , , , , , 
+34, yellow, 5, Terran, 40, , , , , , , , , 
+35, yellow, 3, barren, 20, , , , , , , , , 
+36, yellow, 4, Terran, 80, , , , , , , , , 
+37, yellow, 3, barren, 20, , 4, Terran, 60, , , , , 
+38, yellow, 3, sub-Terran, 40, , 4, minimal-Terran, 20, , , , , 
+39, yellow, 4, minimal-Terran, 20, , 5, Terran, 60, , , , , 
+40, yellow, 4, Terran, 80, , 5, barren, 10, , , , , 
+41, yellow, 4, sub-Terran, 60, , 5, barren, 10, mineral-rich, , , , 
+42, yellow, 5, Terran, 60, , , , , , , , , 
+43, yellow, 4, Terran, 80, , , , , , , , , 
+44, orange, 2, sub-Terran, 40, , 3, sub-Terran, 40, , 5, barren, 10, 
+45, orange, 2, Terran, 60, , 3, sub-Terran, 20, , , , , 
+46, orange, 3, Terran, 40, , 4, minimal-Terran, 10, , , , , 
+47, orange, 2, sub-Terran, 60, , 5, barren, 10, mineral-rich, , , , 
+48, orange, 3, sub-Terran, 40, , 4, minimal-Terran, 10, mineral-rich, , , , 
+49, orange, 2, barren, 10, , 3, sub-Terran, 40, , , , , 
+50, orange, 3, minimal-Terran, 20, , 5, barren, 20, , , , , 
+51, orange, , , , , , , , , , , , 
+52, orange, 4, sub-Terran, 40, , 5, barren, 10, , , , , 
+53, orange, 4, sub-Terran, 40, , 5, barren, 10, , , , , 
+54, orange, 4, minimal-Terran, 20, mineral-rich, 6, barren, 20, , , , , 
+55, orange, , , , , , , , , , , , 
+56, orange, 5, minimal-Terran, 40, , 6, barren, 20, mineral-rich, , , , 
+57, red, 3, Terran, 40, , , , , , , , , 
+58, red, 1, sub-Terran, 40, , , , , , , , , 
+59, red, 1, barren, 10, mineral-rich, 4, minimal-Terran, 40, , , , , 
+60, red, 1, minimal-Terran, 10, , 3, barren, 10, , , , , 
+61, red, 2, sub-Terran, 20, , 3, barren, 20, , , , , 
+62, red, 2, sub-Terran, 60, , 4, barren, 20, , , , , 
+63, red, 1, minimal-Terran, 20, , 3, barren, 10, , , , , 
+64, red, 2, minimal-Terran, 10, , 4, barren, 20, , , , , 
+65, red, 3, sub-Terran, 40, , , , , , , , , 
+66, red, 3, sub-Terran, 60, , , , , , , , , 
+67, red, 2, minimal-Terran, 20, , , , , , , , , 
+68, red, 3, minimal-Terran, 10, , , , , , , , , 
+69, red, 1, barren, 10, , 4, sub-Terran, 40, , , , , 
+70, red, 1, minimal-Terran, 40, , 3, barren, 20, , , , , 
+71, red, 3, minimal-Terran, 20, , 4, barren, 10, , , , , 
+72, red, 2, barren, 10, , 4, minimal-Terran, 10, , , , , 
+73, red, 1, sub-Terran, 40, , , , , , , , , 
+74, red, 2, minimal-Terran, 40, mineral-rich, , , , , , , , 
+75, red, 4, minimal-Terran, 10, , 5, barren, 20, , , , , 
+76, red, , , , , , , , , , , , 
+77, red, 2, sub-Terran, 40, , 5, Barren, 20, mineral-rich, , , , 
+78, red, 1, barren, 10, , 3, minimal-Terran, 40, , , , , 
+
+
+
+BOARD CONFIGURATION
+The mapboard / gameboard is made up of hexes. The columns of this board is summarized as follows:
+* The top column starts A1, B1, C1 until Z1, then the next hex starts after Z with AA1, BB1, CC1, until FF1.
+* These columns have 21 hexes A, C, E, G, I, K, M, O, Q, S, U, W, Y, AA, CC, EE
+* All other columns have 20 hexes 
