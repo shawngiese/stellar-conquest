@@ -1,7 +1,7 @@
 ﻿INSTALL
 Requires - Python 3.7+ and pip (Python package installer)
 Clone or Download the Project
-Run pip install -r requirements.txt
+Run "pip install -r requirements.txt"
 
 
 START
