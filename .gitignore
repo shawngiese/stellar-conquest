@@ -41,7 +41,7 @@ env/
 .DS_Store
 
 # Output files
-output/
+
 *.svg
 *.png
 *.log
