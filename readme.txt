@@ -7,7 +7,7 @@ Run "pip install -r requirements.txt"
 START
 Typically takes about 3 minutes to run on a modern PC. 
 
-Attempting to simulate the board game Stellar Conquest. It has always proven hard to audit the game progress so hoping this also helps understand new techniques to track the game state.
+Attempting to simulate the board game Stellar Conquest. It has always proven hard to audit the game progress so hoping this also helps understand new techniques to track the game state. Also, generate a state log that can feed an AI for it to write short stories taking place in the game universe.
 
 RUN 
 Execute either the following and see the logs as they are generated
@@ -56,19 +56,31 @@ Enable things like
 
 CHANGES
 To simplify the simulation some decisions:
-* sending ships to battle an opponent star hex first start with a rally starhex for the various desired warships to come together and then travel together for the battle
+* Sending ships to battle an opponent star hex first start with a rally starhex for the various desired warships to come together and then travel together for the battle
 * There is a 44th round production run. Maybe players build ships in systems that will give them victory points.
 
 TODO
 Lots os stuff!
 For example:
-* Why are there so few combats?
-* Nobody tries to conquer another's colonies
 * Enable What-If Scenarios to run combat, production and strategy scenarios
 * Monte Carlo support - to run thousands of iterations for statistical significance
 * Clean up fly distance markings on the map
 * Some ships keep trying to go back to their destination very often, ships that flee a warship hex should have a chance to make a new destination.
+* Check planet battles are resolving correctly
+* Heavy refactoring... to much logic in the main file still
+* Set population destruction to optional
+* Verify endgame statistics are correct
+
+
+version 2.1
+* Accounted for 4.2 COLONY ATTACK AND CONQUEST  
+* Accounted for 4.3 BESIEGED COLONIES
+* Accounted for 4.4 CONQUERED COLONIES
 
 version 2
 * In the off chance a task force with colonists arrives at a star hex and there are no suitable planets, then they must target a new star hex.
 * Added more hostilities so warships are sometimes used for battle.
+
+
+
+

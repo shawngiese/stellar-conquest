@@ -26,7 +26,7 @@ if sys.platform == 'win32':
 
 # Import demo components
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'stellar_conquest'))
-from stellar_conquest.core.enums import PlayStyle, GamePhase, ShipType, Technology
+from stellar_conquest.core.enums import PlayStyle, GamePhase, ShipType, Technology, ColonyStatus
 from stellar_conquest.core.constants import FIXED_STAR_LOCATIONS, STARTING_FLEET, IP_PER_POPULATION, IP_PER_FACTORY, MINERAL_RICH_MULTIPLIER, TERRAN_GROWTH_RATE, SUB_TERRAN_GROWTH_RATE, SHIP_COSTS, TECHNOLOGY_COSTS
 from stellar_conquest.game.game_state import GameState, GameSettings, create_game
 from stellar_conquest.actions.movement import MovementAction, MovementOrder
@@ -1257,17 +1257,22 @@ def create_opportunistic_attacks(game_state, player, enemy_targets, turn_number)
 
     Attacks nearby weak targets if:
     - Target is within reasonable range
-    - Player has available warships
+    - Player has available warships (excluding guards)
     - Target appears vulnerable (low defenses)
     """
-    # Find all available warships across locations
+    # Get warships reserved for guarding conquered colonies
+    guards_needed = get_guarding_warships(player)
+
+    # Find all available warships across locations (excluding guards)
     warships_by_location = {}
     for group in player.ship_groups:
         location = group.location
-        ship_counts = group.get_ship_counts()
-        corvettes = ship_counts.get(ShipType.CORVETTE, 0)
-        fighters = ship_counts.get(ShipType.FIGHTER, 0)
-        death_stars = ship_counts.get(ShipType.DEATH_STAR, 0)
+
+        # Get available warships at this location (excluding guards)
+        available = get_available_warships_at_location(player, location, guards_needed)
+        corvettes = available[ShipType.CORVETTE]
+        fighters = available[ShipType.FIGHTER]
+        death_stars = available[ShipType.DEATH_STAR]
 
         if corvettes + fighters + death_stars > 0:
             warships_by_location[location] = {
@@ -1398,17 +1403,24 @@ def create_attack_task_forces_from_all_locations(game_state, player, enemy_targe
 
     Strategy:
     1. Select a rally point (nearby star hex)
-    2. Send warships from various locations to the rally point
+    2. Send warships from various locations to the rally point (excluding guards)
     3. Wait for all ships to arrive
     4. Launch unified attack from rally point
     """
     print(f"   🎯 Planning coordinated attack with rally point strategy:")
 
-    # Find all warships across ALL locations
+    # Get warships reserved for guarding conquered colonies
+    guards_needed = get_guarding_warships(player)
+
+    # Find all available warships across ALL locations (excluding guards)
     warships_by_location = {}
 
     for group in player.ship_groups:
         location = group.location
+
+        # Get available warships at this location (excluding guards)
+        available = get_available_warships_at_location(player, location, guards_needed)
+
         if location not in warships_by_location:
             warships_by_location[location] = {
                 'corvettes': 0,
@@ -1417,20 +1429,19 @@ def create_attack_task_forces_from_all_locations(game_state, player, enemy_targe
                 'group': group
             }
 
-        # Count warships at this location
-        ship_counts = group.get_ship_counts()
-        warships_by_location[location]['corvettes'] += ship_counts.get(ShipType.CORVETTE, 0)
-        warships_by_location[location]['fighters'] += ship_counts.get(ShipType.FIGHTER, 0)
-        warships_by_location[location]['death_stars'] += ship_counts.get(ShipType.DEATH_STAR, 0)
+        # Add available warships (already has guards subtracted)
+        warships_by_location[location]['corvettes'] = available[ShipType.CORVETTE]
+        warships_by_location[location]['fighters'] = available[ShipType.FIGHTER]
+        warships_by_location[location]['death_stars'] = available[ShipType.DEATH_STAR]
 
-    # Filter to only locations with warships
+    # Filter to only locations with available warships
     locations_with_warships = {
         loc: ships for loc, ships in warships_by_location.items()
         if (ships['corvettes'] + ships['fighters'] + ships['death_stars']) > 0
     }
 
     if not locations_with_warships:
-        print(f"   ⚠️  No warships available anywhere")
+        print(f"   ⚠️  No warships available for attack (guards are busy)")
         return
 
     # Show available forces by location
@@ -3121,12 +3132,601 @@ def resolve_combat_phase(game_state, player, turn_number, battle_stats=None):
     
     return combat_occurred
 
+def resolve_colony_attack_combat(attacker_player, defender_player, colony, attacker_warships, location):
+    """
+    Resolve combat against a colony's missile bases.
+    Rules 4.2: Combat against missile bases uses same method as ship combat.
+    Missile bases = corvette strength, Advanced missile bases = fighter strength.
+    Returns (combat_result, bases_destroyed_count)
+    """
+    import random
+    from stellar_conquest.core.enums import ShipType
+
+    # Check for planet shield (unconquerable)
+    if colony.has_planet_shield:
+        print(f"   🛡️  Colony has planet shield - UNCONQUERABLE")
+        return 'planet_shield', {'missile_bases': 0, 'advanced_missile_bases': 0}
+
+    # Get missile base counts
+    missile_bases = colony.missile_bases
+    advanced_missile_bases = colony.advanced_missile_bases
+
+    if missile_bases == 0 and advanced_missile_bases == 0:
+        # No defenses - instant conquest
+        print(f"   ⚡ No defenses - colony conquered immediately!")
+        return 'instant_conquest', {'missile_bases': 0, 'advanced_missile_bases': 0}
+
+    # Reveal defenses to attacker (rule 4.2.3)
+    print(f"   🛡️  Colony defenses revealed: {missile_bases} missile bases, {advanced_missile_bases} advanced bases")
+
+    # Create combat log
+    combat_log = []
+    combat_log.append(f"\n📜 COLONY ATTACK COMBAT - {location}")
+    combat_log.append(f"⚔️  {attacker_player.name} attacks {defender_player.name}'s colony")
+
+    # Initialize forces
+    attacker_ships = dict(attacker_warships)
+
+    # Treat missile bases as corvettes, advanced as fighters (per rules)
+    defender_bases = {}
+    if missile_bases > 0:
+        defender_bases[ShipType.CORVETTE] = missile_bases  # Missile bases = corvette strength
+    if advanced_missile_bases > 0:
+        defender_bases[ShipType.FIGHTER] = advanced_missile_bases  # Advanced = fighter strength
+
+    # Show initial forces
+    att_force = [f"{count} {ship_type.value.lower()}{'s' if count > 1 else ''}"
+                 for ship_type, count in attacker_ships.items()]
+    def_force = [f"{missile_bases} missile base{'s' if missile_bases > 1 else ''}"] if missile_bases > 0 else []
+    if advanced_missile_bases > 0:
+        def_force.append(f"{advanced_missile_bases} advanced base{'s' if advanced_missile_bases > 1 else ''}")
+
+    combat_log.append(f"🔴 {attacker_player.name} Forces: {', '.join(att_force)}")
+    combat_log.append(f"🔵 Colony Defenses: {', '.join(def_force)}")
+    combat_log.append("")
+
+    barrage_round = 1
+    bases_destroyed = {'missile_bases': 0, 'advanced_missile_bases': 0}
+
+    while attacker_ships and defender_bases:
+        combat_log.append(f"📊 BARRAGE ROUND {barrage_round}")
+
+        # Attacker fires first
+        combat_log.append(f"🔴 {attacker_player.name} Fires:")
+        attacker_kills = 0
+
+        for ship_type, count in list(attacker_ships.items()):
+            for i in range(count):
+                if defender_bases:
+                    # Target strongest defense first
+                    target_type = max(defender_bases.keys(),
+                                    key=lambda x: {'fighter': 2, 'corvette': 1}.get(x.value.lower(), 0))
+
+                    dice_count, hit_range = get_combat_value(ship_type, target_type)
+
+                    if hit_range > 0:
+                        if dice_count == 1:
+                            roll = random.randint(1, 6)
+                            hit = roll <= hit_range
+                            base_name = "advanced base" if target_type == ShipType.FIGHTER else "missile base"
+                            combat_log.append(f"   • {ship_type.value.lower()} vs {base_name}: rolled {roll}, need ≤{hit_range} - {'HIT' if hit else 'MISS'}")
+                        else:
+                            roll1, roll2 = random.randint(1, 6), random.randint(1, 6)
+                            total = roll1 + roll2
+                            hit = total == 10
+                            base_name = "advanced base" if target_type == ShipType.FIGHTER else "missile base"
+                            combat_log.append(f"   • {ship_type.value.lower()} vs {base_name}: rolled {roll1}+{roll2}={total}, need exactly 10 - {'HIT' if hit else 'MISS'}")
+
+                        if hit:
+                            defender_bases[target_type] -= 1
+                            # Track which type of base was destroyed
+                            if target_type == ShipType.FIGHTER:
+                                bases_destroyed['advanced_missile_bases'] += 1
+                            else:  # CORVETTE = regular missile base
+                                bases_destroyed['missile_bases'] += 1
+                            attacker_kills += 1
+                            if defender_bases[target_type] <= 0:
+                                del defender_bases[target_type]
+
+        # Bases fire back
+        combat_log.append(f"🔵 Colony Defenses Return Fire:")
+        defender_kills = 0
+
+        # Bases fire using same counts (destroyed bases still fire this round per rules 4.1.5.c)
+        original_bases = {}
+        if missile_bases > 0:
+            original_bases[ShipType.CORVETTE] = missile_bases
+        if advanced_missile_bases > 0:
+            original_bases[ShipType.FIGHTER] = advanced_missile_bases
+
+        for base_type, count in list(original_bases.items()):
+            for i in range(count):
+                if attacker_ships:
+                    # Target strongest ship
+                    target_ship = max(attacker_ships.keys(),
+                                    key=lambda x: {'death_star': 3, 'fighter': 2, 'corvette': 1}.get(x.value.lower(), 0))
+
+                    dice_count, hit_range = get_combat_value(base_type, target_ship)
+
+                    if hit_range > 0:
+                        if dice_count == 1:
+                            roll = random.randint(1, 6)
+                            hit = roll <= hit_range
+                            base_name = "advanced base" if base_type == ShipType.FIGHTER else "missile base"
+                            combat_log.append(f"   • {base_name} vs {target_ship.value.lower()}: rolled {roll}, need ≤{hit_range} - {'HIT' if hit else 'MISS'}")
+                        else:
+                            roll1, roll2 = random.randint(1, 6), random.randint(1, 6)
+                            total = roll1 + roll2
+                            hit = total == 10
+                            base_name = "advanced base" if base_type == ShipType.FIGHTER else "missile base"
+                            combat_log.append(f"   • {base_name} vs {target_ship.value.lower()}: rolled {roll1}+{roll2}={total}, need exactly 10 - {'HIT' if hit else 'MISS'}")
+
+                        if hit:
+                            attacker_ships[target_ship] -= 1
+                            defender_kills += 1
+                            if attacker_ships[target_ship] <= 0:
+                                del attacker_ships[target_ship]
+
+        # Update base counts for next round
+        missile_bases = defender_bases.get(ShipType.CORVETTE, 0)
+        advanced_missile_bases = defender_bases.get(ShipType.FIGHTER, 0)
+
+        # Show round results
+        combat_log.append(f"📈 Round {barrage_round}: {attacker_kills} defenses destroyed, {defender_kills} ships destroyed")
+
+        if attacker_ships:
+            remaining_att = [f"{count} {ship_type.value.lower()}{'s' if count > 1 else ''}"
+                           for ship_type, count in attacker_ships.items()]
+            combat_log.append(f"🔴 {attacker_player.name} Remaining: {', '.join(remaining_att)}")
+        else:
+            combat_log.append(f"🔴 {attacker_player.name}: All ships destroyed")
+
+        if defender_bases:
+            remaining_def = []
+            if missile_bases > 0:
+                remaining_def.append(f"{missile_bases} missile base{'s' if missile_bases > 1 else ''}")
+            if advanced_missile_bases > 0:
+                remaining_def.append(f"{advanced_missile_bases} advanced base{'s' if advanced_missile_bases > 1 else ''}")
+            combat_log.append(f"🔵 Colony Defenses Remaining: {', '.join(remaining_def)}")
+        else:
+            combat_log.append(f"🔵 All defenses destroyed - COLONY CONQUERED")
+
+        combat_log.append("")
+        barrage_round += 1
+
+        # Safety valve
+        if barrage_round > 10:
+            combat_log.append("⏰ Combat exceeds 10 rounds - attacker calls off attack")
+            break
+
+    # Determine result
+    if not attacker_ships:
+        result = 'attacker_eliminated'
+        combat_log.append(f"💀 ATTACK FAILED - {attacker_player.name} forces destroyed")
+    elif not defender_bases:
+        result = 'conquest_successful'
+        combat_log.append(f"⚔️  CONQUEST SUCCESSFUL - All defenses destroyed")
+    else:
+        result = 'attack_called_off'
+        combat_log.append(f"🤝 Attack called off - defenses still standing")
+
+    # Print log
+    for line in combat_log:
+        print(line)
+
+    return result, bases_destroyed
+
+def conquer_colony(game_state, colony, attacker_player, defender_player, location):
+    """
+    Transfer control of a colony to the attacker.
+    Rules 4.2.6 and 4.4: Colony is conquered and comes under attacker's control.
+    """
+    print(f"   👑 {attacker_player.name} CONQUERS {defender_player.name}'s colony at {location}!")
+    print(f"   📊 Colony: {colony.population}M population, {colony.factories} factories")
+
+    # Use the Colony's conquer method
+    colony.conquer(attacker_player.player_id)
+
+    # Move colony from defender to attacker
+    defender_player.colonies.remove(colony)
+    attacker_player.colonies.append(colony)
+
+    return True
+
+def get_guarding_warships(player):
+    """
+    Identify warships that must remain to guard conquered colonies.
+    Returns dict: {location: {ShipType: count}} for minimum guards needed.
+    """
+    guards_needed = {}
+
+    for colony in player.colonies:
+        if colony.is_conquered:
+            location = colony.location
+            # Need to keep 1-2 warships at each conquered colony
+            # Prefer keeping 2 for safety, but minimum 1
+            if location not in guards_needed:
+                guards_needed[location] = {
+                    ShipType.CORVETTE: 1,  # Minimum: 1 corvette
+                    ShipType.FIGHTER: 0,
+                    ShipType.DEATH_STAR: 0
+                }
+
+    return guards_needed
+
+def find_liberation_targets(game_state, player):
+    """
+    Find player's own conquered/besieged colonies that need liberation.
+    Returns list of liberation opportunities with enemy forces present.
+    """
+    liberation_targets = []
+
+    # Priority 1: Find conquered colonies (owned by enemy)
+    for other_player in game_state.players:
+        if other_player.player_id == player.player_id:
+            continue
+
+        # Check if other_player has conquered any of our colonies
+        for colony in other_player.colonies:
+            if colony.is_conquered and colony.original_owner == player.player_id:
+                location = colony.location
+
+                # Check if there are enemy warships at this location
+                enemy_warships = {ShipType.CORVETTE: 0, ShipType.FIGHTER: 0, ShipType.DEATH_STAR: 0}
+                for group in other_player.ship_groups:
+                    if group.location == location:
+                        counts = group.get_ship_counts()
+                        enemy_warships[ShipType.CORVETTE] += counts.get(ShipType.CORVETTE, 0)
+                        enemy_warships[ShipType.FIGHTER] += counts.get(ShipType.FIGHTER, 0)
+                        enemy_warships[ShipType.DEATH_STAR] += counts.get(ShipType.DEATH_STAR, 0)
+
+                total_enemy_warships = sum(enemy_warships.values())
+                if total_enemy_warships > 0:
+                    liberation_targets.append({
+                        'location': location,
+                        'colony': colony,
+                        'occupier': other_player,
+                        'enemy_warships': enemy_warships,
+                        'population': colony.population,
+                        'status': 'CONQUERED',
+                        'priority': 'LIBERATION'
+                    })
+
+    # Priority 2: Find besieged colonies (still owned by us but under siege)
+    for colony in player.colonies:
+        if colony.is_besieged:
+            location = colony.location
+
+            # Find who is besieging
+            for other_player in game_state.players:
+                if other_player.player_id == player.player_id:
+                    continue
+
+                enemy_warships = {ShipType.CORVETTE: 0, ShipType.FIGHTER: 0, ShipType.DEATH_STAR: 0}
+                for group in other_player.ship_groups:
+                    if group.location == location:
+                        counts = group.get_ship_counts()
+                        enemy_warships[ShipType.CORVETTE] += counts.get(ShipType.CORVETTE, 0)
+                        enemy_warships[ShipType.FIGHTER] += counts.get(ShipType.FIGHTER, 0)
+                        enemy_warships[ShipType.DEATH_STAR] += counts.get(ShipType.DEATH_STAR, 0)
+
+                total_enemy_warships = sum(enemy_warships.values())
+                if total_enemy_warships > 0:
+                    liberation_targets.append({
+                        'location': location,
+                        'colony': colony,
+                        'occupier': other_player,
+                        'enemy_warships': enemy_warships,
+                        'population': colony.population,
+                        'status': 'BESIEGED',
+                        'priority': 'LIBERATION'
+                    })
+                    break  # Found the besieger
+
+    return liberation_targets
+
+def get_available_warships_at_location(player, location, guards_needed):
+    """
+    Calculate warships available for attack at a location, excluding guards.
+    """
+    # Count all warships at location
+    total_warships = {ShipType.CORVETTE: 0, ShipType.FIGHTER: 0, ShipType.DEATH_STAR: 0}
+    for group in player.ship_groups:
+        if group.location == location:
+            counts = group.get_ship_counts()
+            total_warships[ShipType.CORVETTE] += counts.get(ShipType.CORVETTE, 0)
+            total_warships[ShipType.FIGHTER] += counts.get(ShipType.FIGHTER, 0)
+            total_warships[ShipType.DEATH_STAR] += counts.get(ShipType.DEATH_STAR, 0)
+
+    # Subtract guards needed at this location
+    if location in guards_needed:
+        guards = guards_needed[location]
+        for ship_type, guard_count in guards.items():
+            total_warships[ship_type] = max(0, total_warships[ship_type] - guard_count)
+
+    return total_warships
+
 def resolve_colony_attacks(game_state, player, turn_number):
     """Resolve colony attack phase."""
     print_phase_header(turn_number, "d", "COLONY ATTACKS")
     print(f"{player.name} checks for colony attack opportunities...")
-    print("   No enemy colonies in range")
-    return False
+
+    attacks_made = False
+
+    # First, identify warships reserved for guarding conquered colonies
+    guards_needed = get_guarding_warships(player)
+    if guards_needed:
+        guard_locations = ', '.join(guards_needed.keys())
+        print(f"   🛡️  Guarding conquered colonies at: {guard_locations}")
+
+    # Priority 1: Check for liberation opportunities (own conquered colonies)
+    liberation_targets = find_liberation_targets(game_state, player)
+
+    if liberation_targets:
+        conquered_count = sum(1 for t in liberation_targets if t.get('status') == 'CONQUERED')
+        besieged_count = sum(1 for t in liberation_targets if t.get('status') == 'BESIEGED')
+
+        if conquered_count > 0 and besieged_count > 0:
+            print(f"\n   🚩 LIBERATION OPPORTUNITIES: {conquered_count} conquered + {besieged_count} besieged colonies!")
+        elif conquered_count > 0:
+            print(f"\n   🚩 LIBERATION OPPORTUNITIES: {conquered_count} conquered colony/colonies!")
+        else:
+            print(f"\n   🚩 LIBERATION OPPORTUNITIES: {besieged_count} besieged colony/colonies!")
+
+        for target in liberation_targets:
+            location = target['location']
+            colony = target['colony']
+            occupier = target['occupier']
+            status = target.get('status', 'UNKNOWN')
+
+            star_data = FIXED_STAR_LOCATIONS.get(location, {})
+            star_name = star_data.get('starname', location)
+
+            # Check if we have warships at this location
+            available_warships = get_available_warships_at_location(player, location, guards_needed)
+            total_available = sum(available_warships.values())
+
+            if total_available > 0:
+                if status == 'CONQUERED':
+                    print(f"\n   ⚔️  LIBERATING conquered colony at {star_name} from {occupier.name}!")
+                else:
+                    print(f"\n   ⚔️  BREAKING SIEGE at {star_name} (besieged by {occupier.name})!")
+
+                force_desc = ", ".join([f"{count} {ship_type.value.lower()}{'s' if count > 1 else ''}"
+                                       for ship_type, count in available_warships.items() if count > 0])
+                print(f"   🗡️  Liberation force: {force_desc}")
+
+                # Resolve combat against occupier's forces
+                # This will be ship-to-ship combat, handled in combat phase
+                # For now, just mark that we attempted liberation
+                print(f"   ℹ️  Ship combat with {occupier.name} will be resolved in combat phase")
+                # Note: Conquest reverts in check_conquered_colonies_maintenance()
+                # Siege lifts in check_besieged_colonies_status() when enemy ships defeated
+            else:
+                print(f"   ⚠️  Cannot liberate {star_name} - no available warships (guards are busy)")
+
+    # Priority 2: Find conquest opportunities (enemy colonies)
+    attack_opportunities = []
+    seen_colonies = set()
+
+    for group in player.ship_groups:
+        location = group.location
+
+        # Get available warships (excluding guards)
+        available_warships = get_available_warships_at_location(player, location, guards_needed)
+        has_available_warships = sum(available_warships.values()) > 0
+
+        if not has_available_warships:
+            continue
+
+        # Check for enemy colonies at this location
+        for other_player in game_state.players:
+            if other_player.player_id == player.player_id:
+                continue
+
+            for colony in other_player.colonies:
+                if colony.location == location:
+                    # Skip if this is a liberation target (already handled above)
+                    if colony.is_conquered and colony.original_owner == player.player_id:
+                        continue
+
+                    colony_id = id(colony)
+                    if colony_id in seen_colonies:
+                        continue
+
+                    seen_colonies.add(colony_id)
+
+                    attack_opportunities.append({
+                        'location': location,
+                        'colony': colony,
+                        'defender': other_player,
+                        'warships': available_warships
+                    })
+
+    if not attack_opportunities and not liberation_targets:
+        print("   No enemy colonies at locations with available warships")
+        return False
+
+    # AI decision: Should we attack?
+    for opportunity in attack_opportunities:
+        location = opportunity['location']
+        colony = opportunity['colony']
+        defender = opportunity['defender']
+        warships = {k: v for k, v in opportunity['warships'].items() if v > 0}  # Filter out zeros
+
+        star_data = FIXED_STAR_LOCATIONS.get(location, {})
+        star_name = star_data.get('starname', location)
+
+        # Decide whether to attack based on play style
+        should_attack = False
+
+        if player.play_style.value == "warlord":
+            # Warlord: Always attack if colony is weak or undefended
+            if colony.missile_bases + colony.advanced_missile_bases <= 1:
+                should_attack = True
+        else:
+            # Others: Only attack if undefended
+            if colony.missile_bases == 0 and colony.advanced_missile_bases == 0 and not colony.has_planet_shield:
+                should_attack = True
+
+        if should_attack:
+            print(f"\n   🎯 Attacking {defender.name}'s colony at {star_name} ({location})")
+
+            force_desc = ", ".join([f"{count} {ship_type.value.lower()}{'s' if count > 1 else ''}"
+                                   for ship_type, count in warships.items()])
+            print(f"   ⚔️  Attacking force: {force_desc}")
+
+            # Resolve combat
+            result, bases_destroyed = resolve_colony_attack_combat(
+                player, defender, colony, warships, location
+            )
+
+            # Destroy the bases from the colony using the correct method
+            if bases_destroyed['missile_bases'] > 0 or bases_destroyed['advanced_missile_bases'] > 0:
+                colony.destroy_defenses(
+                    missile_bases=bases_destroyed['missile_bases'],
+                    advanced_bases=bases_destroyed['advanced_missile_bases']
+                )
+
+            # Check if conquest was successful
+            if result in ['instant_conquest', 'conquest_successful']:
+                conquer_colony(game_state, colony, player, defender, location)
+                attacks_made = True
+            elif result == 'planet_shield':
+                print(f"   ❌ Cannot conquer - planet shield protects colony")
+            elif result == 'attacker_eliminated':
+                print(f"   ❌ Attack failed - all attacking ships destroyed")
+            else:
+                print(f"   ⚠️  Attack incomplete - defenses still standing")
+
+    if not attacks_made:
+        print("   No attacks initiated this turn")
+
+    return attacks_made
+
+def check_conquered_colonies_maintenance(game_state):
+    """
+    Check all conquered colonies and revert those without warship protection.
+    Rules 4.4.6: Colony reverts to original owner if all warships leave its hex.
+    """
+    colonies_reverted = []
+
+    for player in game_state.players:
+        # Check each conquered colony this player owns
+        for colony in list(player.colonies):  # Use list() to allow modification during iteration
+            if not colony.is_conquered:
+                continue
+
+            location = colony.location
+
+            # Check if player has at least one warship at this location
+            has_warship_protection = False
+            for group in player.ship_groups:
+                if group.location == location:
+                    ship_counts = group.get_ship_counts()
+                    if (ship_counts.get(ShipType.CORVETTE, 0) > 0 or
+                        ship_counts.get(ShipType.FIGHTER, 0) > 0 or
+                        ship_counts.get(ShipType.DEATH_STAR, 0) > 0):
+                        has_warship_protection = True
+                        break
+
+            # If no warship protection, revert to original owner
+            if not has_warship_protection and colony.original_owner is not None:
+                # Find original owner
+                original_owner = next((p for p in game_state.players if p.player_id == colony.original_owner), None)
+
+                if original_owner:
+                    star_data = FIXED_STAR_LOCATIONS.get(location, {})
+                    star_name = star_data.get('starname', location)
+
+                    print(f"   🔄 {player.name}'s conquered colony at {star_name} REVERTS to {original_owner.name} (no warship protection)")
+
+                    # Revert colony
+                    colony.status = ColonyStatus.ACTIVE
+                    colony.player_id = colony.original_owner
+                    colony.original_owner = None
+                    colony.turns_under_control = 0
+
+                    # Move colony from current owner to original owner
+                    player.colonies.remove(colony)
+                    original_owner.colonies.append(colony)
+
+                    colonies_reverted.append({
+                        'colony': colony,
+                        'location': location,
+                        'conqueror': player.name,
+                        'original_owner': original_owner.name
+                    })
+
+    return colonies_reverted
+
+def check_besieged_colonies_status(game_state):
+    """
+    Check all active colonies and update their besieged status.
+    Rules 4.3: Colony is under siege if enemy warship is in its hex.
+    """
+    besieged_changes = []
+
+    for player in game_state.players:
+        for colony in player.colonies:
+            # Only check active (non-conquered) colonies
+            if colony.is_conquered:
+                continue
+
+            location = colony.location
+            was_besieged = colony.is_besieged
+
+            # Check if there are enemy warships at this location
+            has_enemy_warships = False
+            besieging_player = None
+
+            for other_player in game_state.players:
+                if other_player.player_id == player.player_id:
+                    continue
+
+                for group in other_player.ship_groups:
+                    if group.location == location:
+                        # Check if this group has warships
+                        ship_counts = group.get_ship_counts()
+                        if (ship_counts.get(ShipType.CORVETTE, 0) > 0 or
+                            ship_counts.get(ShipType.FIGHTER, 0) > 0 or
+                            ship_counts.get(ShipType.DEATH_STAR, 0) > 0):
+                            has_enemy_warships = True
+                            besieging_player = other_player
+                            break
+
+                if has_enemy_warships:
+                    break
+
+            # Update siege status
+            if has_enemy_warships and not was_besieged:
+                # Colony is now under siege
+                colony.status = ColonyStatus.BESIEGED
+                star_data = FIXED_STAR_LOCATIONS.get(location, {})
+                star_name = star_data.get('starname', location)
+                besieged_changes.append({
+                    'type': 'besieged',
+                    'colony': colony,
+                    'location': location,
+                    'owner': player.name,
+                    'besieger': besieging_player.name
+                })
+                print(f"   ⚠️  {player.name}'s colony at {star_name} is now UNDER SIEGE by {besieging_player.name}!")
+
+            elif not has_enemy_warships and was_besieged:
+                # Siege lifted
+                colony.status = ColonyStatus.ACTIVE
+                star_data = FIXED_STAR_LOCATIONS.get(location, {})
+                star_name = star_data.get('starname', location)
+                besieged_changes.append({
+                    'type': 'siege_lifted',
+                    'colony': colony,
+                    'location': location,
+                    'owner': player.name
+                })
+                print(f"   ✅ Siege lifted on {player.name}'s colony at {star_name}")
+
+    return besieged_changes
 
 def debark_colonists(game_state, player, turn_number):
     """Handle colonist debarking phase."""
@@ -3577,15 +4177,19 @@ def remove_transport_from_task_force(task_force_group, count):
     print(f"       🚢 Removed {transports_removed} colony transport(s) from task force")
 
 def add_command_post(game_state, player_id, location):
-    """Add a command post for a player at the specified star system location."""
+    """Add a command post for a player at the specified star system location.
+
+    Note: Per Rule 4.3.2, besieged colonies cannot be used as command posts.
+    This is enforced by preventing ship orders that exceed 8-hex range from besieged colonies.
+    """
     # Initialize command post tracking if not exists
     if not hasattr(game_state, 'command_posts'):
         game_state.command_posts = {}  # location -> set of player_ids
-    
+
     # Add this location if not exists
     if location not in game_state.command_posts:
         game_state.command_posts[location] = set()
-    
+
     # Check if player already has a command post here
     if player_id not in game_state.command_posts[location]:
         game_state.command_posts[location].add(player_id)
@@ -4612,11 +5216,18 @@ def execute_production_decisions(game_state, player, decisions):
             ship_type = decision[1]
             count = decision[2]
             cost = decision[3]
-            
+
             # Ships are produced at colonies and placed in their star hex (per rules)
-            # Use the most productive colony for ship production (strategic choice)
+            # Use the most productive NON-BESIEGED colony for ship production (Rule 4.3.2)
             if player.colonies:
-                producing_colony = max(player.colonies, key=lambda c: c.calculate_industrial_points())
+                # Filter out besieged colonies - they cannot build ships
+                eligible_colonies = [c for c in player.colonies if not c.is_besieged]
+
+                if not eligible_colonies:
+                    print(f"     ⚠️  Cannot build ships - all colonies are under siege!")
+                    continue
+
+                producing_colony = max(eligible_colonies, key=lambda c: c.calculate_industrial_points())
                 production_location = producing_colony.location
                 
                 # Find or create ship group at the producing colony's star hex
@@ -4895,6 +5506,17 @@ def run_player_turn(game_state, player, turn_number, map_generator, executor=Non
     # 1. Create new task forces (start of turn only)
     create_new_task_forces(game_state, player, turn_number)
 
+    # 1b. Check conquered colonies maintenance (all players)
+    reverted_colonies = check_conquered_colonies_maintenance(game_state)
+    if reverted_colonies:
+        print(f"\n⚠️  Conquered Colony Maintenance:")
+        for reversion in reverted_colonies:
+            print(f"   • {reversion['location']}: {reversion['conqueror']} → {reversion['original_owner']}")
+
+    # 1c. Check besieged colonies status (all players)
+    besieged_changes = check_besieged_colonies_status(game_state)
+    # (Output is printed directly in check_besieged_colonies_status)
+
     # 2. Move spaceships
     make_movement_decisions(game_state, player, turn_number)
 
@@ -5122,9 +5744,10 @@ def auto_demo_with_enhanced_maps(speed_mode='NORMAL', generate_maps=True, max_tu
         
         # Calculate colony statistics
         total_colonies = len(player.colonies)
+        conquered_colonies = sum(1 for colony in player.colonies if colony.is_conquered)
         total_population = sum(colony.population for colony in player.colonies)
         total_factories = sum(colony.factories for colony in player.colonies)
-        
+
         # Get battle statistics
         battles = battle_stats.get(player.name, {}).get('battles', 0)
         victories = battle_stats.get(player.name, {}).get('victories', 0)
@@ -5134,7 +5757,10 @@ def auto_demo_with_enhanced_maps(speed_mode='NORMAL', generate_maps=True, max_tu
         print(f"      Victory Points: {vp}")
         print(f"      Task Forces: {task_forces}")
         print(f"      Total Ships: {total_ships} ({', '.join(ship_breakdown) if ship_breakdown else 'no ships'})")
-        print(f"      Colonies: {total_colonies} colonies, {total_population}M total population, {total_factories} factories")
+        colony_desc = f"{total_colonies} colonies"
+        if conquered_colonies > 0:
+            colony_desc += f" ({conquered_colonies} conquered)"
+        print(f"      Colonies: {colony_desc}, {total_population}M total population, {total_factories} factories")
         print(f"      Systems Explored: {systems_explored}")
         print(f"      Battles: {battles} fought, {victories} won")
     
