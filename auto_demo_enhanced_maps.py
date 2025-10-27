@@ -23,7 +23,7 @@ if sys.platform == 'win32':
     except Exception:
         # If that fails, just replace problematic characters
         pass
-   
+
 # Import demo components
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'stellar_conquest'))
 from stellar_conquest.core.enums import PlayStyle, GamePhase, ShipType, Technology
@@ -1074,21 +1074,840 @@ def generate_route_display(game_state, start_hex, destination_hex, ship_speed, t
     
     return " → ".join(route_parts)
 
+def send_warlord_scouts_to_enemy_yellow_stars(game_state, player, main_group, turn_number):
+    """Send scouts to yellow stars near enemy entry hexes to discover their colonies.
+
+    Yellow stars are guaranteed to have planets, so they're prime colonization targets.
+    This reconnaissance helps the Warlord discover enemy colonies for future attacks.
+    """
+    # Track which enemy yellow stars we've already sent scouts to
+    if not hasattr(game_state, 'warlord_recon_targets'):
+        game_state.warlord_recon_targets = {}
+    if player.player_id not in game_state.warlord_recon_targets:
+        game_state.warlord_recon_targets[player.player_id] = set()
+
+    already_scouted = game_state.warlord_recon_targets[player.player_id]
+
+    # Get available scouts
+    ship_counts = main_group.get_ship_counts()
+    available_scouts = ship_counts.get(ShipType.SCOUT, 0)
+
+    if available_scouts == 0:
+        return  # No scouts available
+
+    # Find enemy entry hexes
+    enemy_entry_hexes = []
+    for other_player in game_state.players:
+        if other_player.player_id != player.player_id:
+            enemy_entry_hexes.append({
+                'location': other_player.entry_hex,
+                'player_name': other_player.name
+            })
+
+    if not enemy_entry_hexes:
+        return
+
+    # Find yellow stars near enemy entry hexes
+    enemy_yellow_stars = []
+    for enemy_info in enemy_entry_hexes:
+        enemy_hex = enemy_info['location']
+        enemy_name = enemy_info['player_name']
+
+        # Find all stars within 8 hexes of enemy entry hex
+        for star_loc, star_data in FIXED_STAR_LOCATIONS.items():
+            if star_data.get('color') == 'yellow':
+                distance = calculate_hex_distance(enemy_hex, star_loc)
+                if distance <= 8 and star_loc not in already_scouted:
+                    # Check if we've already explored this system
+                    if hasattr(game_state.board, 'explored_systems'):
+                        if star_loc in game_state.board.explored_systems:
+                            if player.player_id in game_state.board.explored_systems[star_loc]:
+                                continue  # Already explored
+
+                    enemy_yellow_stars.append({
+                        'location': star_loc,
+                        'name': star_data['starname'],
+                        'distance_from_enemy': distance,
+                        'distance_from_us': calculate_hex_distance(player.entry_hex, star_loc),
+                        'enemy_name': enemy_name
+                    })
+
+    if not enemy_yellow_stars:
+        return  # No new targets
+
+    # Sort by distance from us (closest first)
+    enemy_yellow_stars.sort(key=lambda x: x['distance_from_us'])
+
+    # Send scouts to enemy yellow stars
+    scouts_sent = 0
+    max_recon_scouts = min(2, available_scouts)  # Send up to 2 scouts for recon per turn
+
+    print(f"   🔍 WARLORD RECONNAISSANCE: Scouting enemy yellow stars")
+
+    for target_star in enemy_yellow_stars[:max_recon_scouts]:
+        if scouts_sent >= max_recon_scouts:
+            break
+
+        location = target_star['location']
+        star_name = target_star['name']
+        enemy_name = target_star['enemy_name']
+
+        # Find next TF number
+        tf_number = 2
+        if hasattr(game_state, 'movement_plans') and player.player_id in game_state.movement_plans:
+            existing_tfs = set(game_state.movement_plans[player.player_id].keys())
+            while tf_number in existing_tfs:
+                tf_number += 1
+
+        # Get path
+        from stellar_conquest.utils.hex_utils import HexGrid
+        hex_grid = HexGrid()
+
+        try:
+            complete_path = hex_grid.find_shortest_path(player.entry_hex, location)
+            if not complete_path:
+                continue
+        except Exception:
+            continue
+
+        # Send 1 scout with 1 corvette escort
+        available_corvettes = ship_counts.get(ShipType.CORVETTE, 0)
+        send_corvette = available_corvettes > 0
+
+        # Split ships
+        scout_success = split_ships_into_task_force(player, player.entry_hex, ShipType.SCOUT, 1, tf_number)
+        if not scout_success:
+            continue
+
+        if send_corvette:
+            split_ships_into_task_force(player, player.entry_hex, ShipType.CORVETTE, 1, tf_number)
+
+        # Store movement plan
+        if not hasattr(game_state, 'movement_plans'):
+            game_state.movement_plans = {}
+        if player.player_id not in game_state.movement_plans:
+            game_state.movement_plans[player.player_id] = {}
+
+        game_state.movement_plans[player.player_id][tf_number] = {
+            'planned_path': complete_path,
+            'path_index': 0,
+            'final_destination': location,
+            'target_name': star_name,
+            'can_move_this_turn': True,
+            'mission_type': 'recon'
+        }
+
+        # Track this target as scouted
+        already_scouted.add(location)
+
+        escort_str = " + 1 corvette escort" if send_corvette else ""
+        distance = target_star['distance_from_us']
+        turns_to_reach = (distance + player.current_ship_speed - 1) // player.current_ship_speed
+
+        print(f"      🔭 TF{tf_number}: Scout{escort_str} → {star_name} at {location} (near {enemy_name}, ETA {turns_to_reach} turns)")
+
+        scouts_sent += 1
+
+    if scouts_sent > 0:
+        print(f"      ✅ {scouts_sent} reconnaissance mission{'s' if scouts_sent > 1 else ''} dispatched")
+
+def find_enemy_colonies(game_state, player):
+    """Find known enemy colony locations - only from systems this player has actually explored."""
+    enemy_colonies = []
+
+    # Get systems this player has explored
+    if not hasattr(game_state.board, 'explored_systems'):
+        return enemy_colonies
+
+    explored_by_player = set()
+    for system_location, explorer_ids in game_state.board.explored_systems.items():
+        if player.player_id in explorer_ids:
+            explored_by_player.add(system_location)
+
+    if not explored_by_player:
+        return enemy_colonies
+
+    # Only check colonies in systems this player has explored
+    for other_player in game_state.players:
+        if other_player.player_id == player.player_id:
+            continue
+
+        # Check if we've discovered their colonies in systems we've explored
+        for colony in other_player.colonies:
+            location = colony.location
+
+            # Only add if we've explored this system
+            if location in explored_by_player:
+                distance = calculate_hex_distance(player.entry_hex, location)
+                enemy_colonies.append({
+                    'location': location,
+                    'distance': distance,
+                    'owner': other_player.name,
+                    'population': colony.population,
+                    'factories': colony.factories,
+                    'defenses': getattr(colony, 'missile_bases', 0)
+                })
+
+    # Sort by distance (closest first)
+    enemy_colonies.sort(key=lambda x: x['distance'])
+    return enemy_colonies
+
+def create_opportunistic_attacks(game_state, player, enemy_targets, turn_number):
+    """Create direct attack task forces for non-Warlord players (simpler strategy).
+
+    Attacks nearby weak targets if:
+    - Target is within reasonable range
+    - Player has available warships
+    - Target appears vulnerable (low defenses)
+    """
+    # Find all available warships across locations
+    warships_by_location = {}
+    for group in player.ship_groups:
+        location = group.location
+        ship_counts = group.get_ship_counts()
+        corvettes = ship_counts.get(ShipType.CORVETTE, 0)
+        fighters = ship_counts.get(ShipType.FIGHTER, 0)
+        death_stars = ship_counts.get(ShipType.DEATH_STAR, 0)
+
+        if corvettes + fighters + death_stars > 0:
+            warships_by_location[location] = {
+                'corvettes': corvettes,
+                'fighters': fighters,
+                'death_stars': death_stars
+            }
+
+    if not warships_by_location:
+        return  # No warships available
+
+    total_warships = sum(w['corvettes'] + w['fighters'] + w['death_stars'] for w in warships_by_location.values())
+
+    # Look for weak, nearby targets
+    attacks_launched = 0
+    for target in enemy_targets:
+        if attacks_launched >= 1:  # Limit to 1 attack per turn for non-Warlords
+            break
+
+        target_location = target['location']
+        target_strength = target['population'] + (target['defenses'] * 3)
+
+        # Only attack weak targets (population < 15M and defenses < 2)
+        if target['population'] > 15 or target['defenses'] >= 2:
+            continue
+
+        # Find closest location with warships
+        best_location = None
+        best_distance = float('inf')
+
+        for loc in warships_by_location.keys():
+            distance = calculate_hex_distance(loc, target_location)
+            if distance < best_distance and distance <= 12:  # Only attack if within 12 hexes
+                best_distance = distance
+                best_location = loc
+
+        if best_location is None:
+            continue
+
+        ships = warships_by_location[best_location]
+
+        # Determine attack force (send minimal force for weak targets)
+        corvettes_to_send = min(1, ships['corvettes'])
+        fighters_to_send = min(1, ships['fighters'])
+
+        if corvettes_to_send + fighters_to_send == 0:
+            continue
+
+        print(f"   ⚔️  Opportunistic attack: {target['owner']}'s colony at {target_location} ({target['population']}M pop, {target['defenses']} bases)")
+
+        # Launch direct attack
+        success = create_single_attack_task_force(
+            game_state, player, best_location, target_location,
+            target['owner'], target['population'], target['defenses'],
+            corvettes_to_send, fighters_to_send, 0, turn_number
+        )
+
+        if success:
+            attacks_launched += 1
+            # Remove used ships from available pool
+            ships['corvettes'] -= corvettes_to_send
+            ships['fighters'] -= fighters_to_send
+
+def find_rally_point_star(game_state, player, warship_locations, target_location):
+    """Find a suitable star hex to use as a rally point for assembling attack forces.
+
+    Prioritizes:
+    1. Star hexes the player controls (has colonies)
+    2. Star hexes the player has explored
+    3. Nearby star hexes between warship locations and target
+    """
+    # Get player's colony locations (best rally points)
+    player_star_hexes = set()
+    for colony in player.colonies:
+        player_star_hexes.add(colony.location)
+
+    # Get explored star systems
+    explored_stars = set()
+    if hasattr(game_state.board, 'explored_systems'):
+        for system_location, explorer_ids in game_state.board.explored_systems.items():
+            if player.player_id in explorer_ids:
+                explored_stars.add(system_location)
+
+    # Calculate average position of warship locations
+    if not warship_locations:
+        return None
+
+    # Prefer player's own stars closest to the target
+    if player_star_hexes:
+        best_rally = None
+        best_score = float('inf')
+
+        for star_hex in player_star_hexes:
+            # Score = distance to target + average distance from warships
+            dist_to_target = calculate_hex_distance(star_hex, target_location)
+            avg_dist_from_ships = sum(calculate_hex_distance(star_hex, loc) for loc in warship_locations) / len(warship_locations)
+            score = dist_to_target + avg_dist_from_ships
+
+            if score < best_score:
+                best_score = score
+                best_rally = star_hex
+
+        if best_rally:
+            return best_rally
+
+    # Otherwise use explored stars
+    if explored_stars:
+        best_rally = None
+        best_score = float('inf')
+
+        for star_hex in explored_stars:
+            dist_to_target = calculate_hex_distance(star_hex, target_location)
+            avg_dist_from_ships = sum(calculate_hex_distance(star_hex, loc) for loc in warship_locations) / len(warship_locations)
+            score = dist_to_target + avg_dist_from_ships
+
+            if score < best_score:
+                best_score = score
+                best_rally = star_hex
+
+        if best_rally:
+            return best_rally
+
+    # Fallback: use player's entry hex
+    return player.entry_hex
+
+def create_attack_task_forces_from_all_locations(game_state, player, enemy_targets, turn_number):
+    """Create attack task forces by first rallying warships at a staging point, then attacking.
+
+    Strategy:
+    1. Select a rally point (nearby star hex)
+    2. Send warships from various locations to the rally point
+    3. Wait for all ships to arrive
+    4. Launch unified attack from rally point
+    """
+    print(f"   🎯 Planning coordinated attack with rally point strategy:")
+
+    # Find all warships across ALL locations
+    warships_by_location = {}
+
+    for group in player.ship_groups:
+        location = group.location
+        if location not in warships_by_location:
+            warships_by_location[location] = {
+                'corvettes': 0,
+                'fighters': 0,
+                'death_stars': 0,
+                'group': group
+            }
+
+        # Count warships at this location
+        ship_counts = group.get_ship_counts()
+        warships_by_location[location]['corvettes'] += ship_counts.get(ShipType.CORVETTE, 0)
+        warships_by_location[location]['fighters'] += ship_counts.get(ShipType.FIGHTER, 0)
+        warships_by_location[location]['death_stars'] += ship_counts.get(ShipType.DEATH_STAR, 0)
+
+    # Filter to only locations with warships
+    locations_with_warships = {
+        loc: ships for loc, ships in warships_by_location.items()
+        if (ships['corvettes'] + ships['fighters'] + ships['death_stars']) > 0
+    }
+
+    if not locations_with_warships:
+        print(f"   ⚠️  No warships available anywhere")
+        return
+
+    # Show available forces by location
+    total_corvettes = sum(s['corvettes'] for s in locations_with_warships.values())
+    total_fighters = sum(s['fighters'] for s in locations_with_warships.values())
+    total_death_stars = sum(s['death_stars'] for s in locations_with_warships.values())
+
+    print(f"   Available forces across {len(locations_with_warships)} location{'s' if len(locations_with_warships) != 1 else ''}:")
+    print(f"      Total: {total_corvettes} corvettes, {total_fighters} fighters, {total_death_stars} death stars")
+
+    for loc, ships in locations_with_warships.items():
+        if ships['corvettes'] + ships['fighters'] + ships['death_stars'] > 0:
+            parts = []
+            if ships['corvettes'] > 0:
+                parts.append(f"{ships['corvettes']} corvette{'s' if ships['corvettes'] > 1 else ''}")
+            if ships['fighters'] > 0:
+                parts.append(f"{ships['fighters']} fighter{'s' if ships['fighters'] > 1 else ''}")
+            if ships['death_stars'] > 0:
+                parts.append(f"{ships['death_stars']} death star{'s' if ships['death_stars'] > 1 else ''}")
+            print(f"      At {loc}: {', '.join(parts)}")
+
+    # Track ongoing attack preparations
+    if not hasattr(game_state, 'attack_staging'):
+        game_state.attack_staging = {}
+    if player.player_id not in game_state.attack_staging:
+        game_state.attack_staging[player.player_id] = []
+
+    # Process each enemy target
+    for target in enemy_targets[:1]:  # Focus on one target at a time
+        target_location = target['location']
+        owner = target['owner']
+        population = target['population']
+        defenses = target['defenses']
+        target_strength = population + (defenses * 3)
+
+        # Determine how many ships we want for this attack
+        corvettes_needed = 0
+        fighters_needed = 0
+        death_stars_needed = 0
+
+        if target_strength > 15:  # Strong target
+            corvettes_needed = min(3, total_corvettes)
+            fighters_needed = min(2, total_fighters)
+            death_stars_needed = min(1, total_death_stars)
+        elif target_strength > 8:  # Medium target
+            corvettes_needed = min(2, total_corvettes)
+            fighters_needed = min(2, total_fighters)
+        else:  # Weak target
+            corvettes_needed = min(1, total_corvettes)
+            fighters_needed = min(1, total_fighters)
+
+        if corvettes_needed + fighters_needed + death_stars_needed == 0:
+            print(f"   ⚠️  Insufficient forces available for attack")
+            continue
+
+        # Find rally point
+        rally_point = find_rally_point_star(game_state, player, list(locations_with_warships.keys()), target_location)
+
+        star_data = FIXED_STAR_LOCATIONS.get(rally_point, {})
+        rally_name = star_data.get('starname', f'Star_{rally_point}')
+
+        print(f"   🏴 Rally Point: {rally_name} at {rally_point}")
+        print(f"   🎯 Target: {owner}'s colony at {target_location} ({population}M pop, {defenses} bases)")
+
+        # Send warships to rally point
+        rally_tf_list = send_warships_to_rally_point(
+            game_state, player, locations_with_warships, rally_point,
+            corvettes_needed, fighters_needed, death_stars_needed, turn_number
+        )
+
+        if rally_tf_list:
+            # Track this attack staging
+            game_state.attack_staging[player.player_id].append({
+                'rally_point': rally_point,
+                'rally_tfs': rally_tf_list,  # List of TFs heading to rally point
+                'target': target_location,
+                'target_owner': owner,
+                'turn_initiated': turn_number,
+                'ships_needed': {
+                    'corvettes': corvettes_needed,
+                    'fighters': fighters_needed,
+                    'death_stars': death_stars_needed
+                }
+            })
+
+        break  # Only plan one attack at a time
+
+def send_warships_to_rally_point(game_state, player, locations_with_warships, rally_point,
+                                  corvettes_needed, fighters_needed, death_stars_needed, turn_number):
+    """Send warships from various locations to converge at a rally point.
+
+    Returns: List of TF numbers heading to rally point, or None if failed
+    """
+    from stellar_conquest.utils.hex_utils import HexGrid
+    hex_grid = HexGrid()
+
+    corvettes_sent = 0
+    fighters_sent = 0
+    death_stars_sent = 0
+    rally_tfs = []  # Track all TFs heading to rally point
+
+    # Send warships from each location to rally point
+    for location, ships_here in locations_with_warships.items():
+        if location == rally_point:
+            # Already at rally point - will be included in final count
+            corvettes_sent += min(ships_here['corvettes'], corvettes_needed - corvettes_sent)
+            fighters_sent += min(ships_here['fighters'], fighters_needed - fighters_sent)
+            death_stars_sent += min(ships_here['death_stars'], death_stars_needed - death_stars_sent)
+            continue
+
+        # Determine what to send from this location
+        corvettes_from_here = min(ships_here['corvettes'], corvettes_needed - corvettes_sent)
+        fighters_from_here = min(ships_here['fighters'], fighters_needed - fighters_sent)
+        death_stars_from_here = min(ships_here['death_stars'], death_stars_needed - death_stars_sent)
+
+        if corvettes_from_here + fighters_from_here + death_stars_from_here == 0:
+            continue  # Nothing to send from here
+
+        # Get unique TF number for this group
+        tf_number = 2
+        if hasattr(game_state, 'movement_plans') and player.player_id in game_state.movement_plans:
+            existing_tfs = set(game_state.movement_plans[player.player_id].keys())
+            while tf_number in existing_tfs:
+                tf_number += 1
+
+        # Get path to rally point
+        try:
+            path_to_rally = hex_grid.find_shortest_path(location, rally_point)
+            if not path_to_rally:
+                print(f"     ⚠️  Cannot find path from {location} to rally point")
+                continue
+        except Exception as e:
+            print(f"     ⚠️  Path error from {location}: {e}")
+            continue
+
+        # Create movement orders for ships from this location
+        ships_split = False
+        if corvettes_from_here > 0:
+            success = split_ships_into_task_force(player, location, ShipType.CORVETTE, corvettes_from_here, tf_number)
+            if success:
+                corvettes_sent += corvettes_from_here
+                ships_split = True
+
+        if fighters_from_here > 0:
+            success = split_ships_into_task_force(player, location, ShipType.FIGHTER, fighters_from_here, tf_number)
+            if success:
+                fighters_sent += fighters_from_here
+                ships_split = True
+
+        if death_stars_from_here > 0:
+            success = split_ships_into_task_force(player, location, ShipType.DEATH_STAR, death_stars_from_here, tf_number)
+            if success:
+                death_stars_sent += death_stars_from_here
+                ships_split = True
+
+        if not ships_split:
+            continue
+
+        # Store movement plan to rally point
+        if not hasattr(game_state, 'movement_plans'):
+            game_state.movement_plans = {}
+        if player.player_id not in game_state.movement_plans:
+            game_state.movement_plans[player.player_id] = {}
+
+        game_state.movement_plans[player.player_id][tf_number] = {
+            'planned_path': path_to_rally,
+            'path_index': 0,
+            'final_destination': rally_point,
+            'target_name': f'Rally Point',
+            'can_move_this_turn': True,
+            'mission_type': 'rally',
+        }
+
+        rally_tfs.append(tf_number)
+
+        distance = calculate_hex_distance(location, rally_point)
+        turns_to_rally = (distance + player.current_ship_speed - 1) // player.current_ship_speed
+
+        parts = []
+        if corvettes_from_here > 0:
+            parts.append(f"{corvettes_from_here} corvette{'s' if corvettes_from_here > 1 else ''}")
+        if fighters_from_here > 0:
+            parts.append(f"{fighters_from_here} fighter{'s' if fighters_from_here > 1 else ''}")
+        if death_stars_from_here > 0:
+            parts.append(f"{death_stars_from_here} death star{'s' if death_stars_from_here > 1 else ''}")
+
+        print(f"     ⚙️  TF{tf_number}: {', '.join(parts)} from {location} → rally point (ETA {turns_to_rally} turns)")
+
+    if corvettes_sent + fighters_sent + death_stars_sent == 0:
+        print(f"     ⚠️  Failed to send any ships to rally point")
+        return None
+
+    total_sent = corvettes_sent + fighters_sent + death_stars_sent
+    print(f"     ✅ {total_sent} warships ordered to rally point")
+    return rally_tfs if rally_tfs else None
+
+def create_single_attack_task_force(game_state, player, launch_location, target_location, owner, population, defenses,
+                                    corvettes_to_send, fighters_to_send, death_stars_to_send, turn_number):
+    """Create a single attack task force from a specific location."""
+    # Find next available task force number
+    tf_number = 2
+    if hasattr(game_state, 'movement_plans') and player.player_id in game_state.movement_plans:
+        existing_tfs = set(game_state.movement_plans[player.player_id].keys())
+        while tf_number in existing_tfs:
+            tf_number += 1
+
+    # Build force description
+    force_parts = []
+    if corvettes_to_send > 0:
+        force_parts.append(f"{corvettes_to_send} corvette{'s' if corvettes_to_send > 1 else ''}")
+    if fighters_to_send > 0:
+        force_parts.append(f"{fighters_to_send} fighter{'s' if fighters_to_send > 1 else ''}")
+    if death_stars_to_send > 0:
+        force_parts.append(f"{death_stars_to_send} death star{'s' if death_stars_to_send > 1 else ''}")
+    force_desc = " + ".join(force_parts)
+
+    # Show target strength
+    if defenses > 0:
+        target_desc = f"{population}M pop, {defenses} missile bases"
+    else:
+        target_desc = f"{population}M pop, undefended"
+
+    distance = calculate_hex_distance(launch_location, target_location)
+    print(f"   🗡️  Creating TF{tf_number}: {force_desc} from {launch_location} → ATTACK {owner}'s colony at {target_location} ({target_desc}, {distance} hexes)")
+
+    # Get path
+    from stellar_conquest.utils.hex_utils import HexGrid
+    hex_grid = HexGrid()
+
+    try:
+        complete_path = hex_grid.find_shortest_path(launch_location, target_location)
+        if not complete_path:
+            print(f"     ⚠️  Unable to find path, skipping")
+            return False
+    except Exception as e:
+        print(f"     ⚠️  Path finding error: {e}, skipping")
+        return False
+
+    # Create the task force by splitting ships
+    all_success = True
+
+    if corvettes_to_send > 0:
+        success = split_ships_into_task_force(player, launch_location, ShipType.CORVETTE, corvettes_to_send, tf_number)
+        if not success:
+            all_success = False
+
+    if fighters_to_send > 0:
+        success = split_ships_into_task_force(player, launch_location, ShipType.FIGHTER, fighters_to_send, tf_number)
+        if not success:
+            all_success = False
+
+    if death_stars_to_send > 0:
+        success = split_ships_into_task_force(player, launch_location, ShipType.DEATH_STAR, death_stars_to_send, tf_number)
+        if not success:
+            all_success = False
+
+    if all_success:
+        # Store movement plan
+        if not hasattr(game_state, 'movement_plans'):
+            game_state.movement_plans = {}
+        if player.player_id not in game_state.movement_plans:
+            game_state.movement_plans[player.player_id] = {}
+
+        game_state.movement_plans[player.player_id][tf_number] = {
+            'planned_path': complete_path,
+            'path_index': 0,
+            'final_destination': target_location,
+            'target_name': f"{owner}'s colony",
+            'can_move_this_turn': True,
+            'mission_type': 'attack',
+            'target_owner': owner
+        }
+
+        turns_to_reach = (distance + player.current_ship_speed - 1) // player.current_ship_speed
+        print(f"     ✅ Attack force created - ETA {turns_to_reach} turns")
+        return True
+    else:
+        print(f"     ❌ Attack force creation failed")
+        return False
+
+def create_attack_task_forces(game_state, player, entry_hex, main_group, enemy_targets, turn_number):
+    """Create attack task forces to raid enemy colonies (Warlord strategy)."""
+    print(f"   🎯 Planning attack missions against discovered enemy colonies:")
+
+    # Get available warships
+    available_corvettes = main_group.get_ship_counts().get(ShipType.CORVETTE, 0)
+    available_fighters = main_group.get_ship_counts().get(ShipType.FIGHTER, 0)
+    available_death_stars = main_group.get_ship_counts().get(ShipType.DEATH_STAR, 0)
+
+    total_warships = available_corvettes + available_fighters + available_death_stars
+
+    if total_warships == 0:
+        print(f"   ⚠️  No warships available for attack missions")
+        return
+
+    print(f"   Available forces: {available_corvettes} corvettes, {available_fighters} fighters, {available_death_stars} death stars")
+
+    # Target multiple enemy colonies based on available forces
+    attacks_launched = 0
+    max_attacks = min(len(enemy_targets), (total_warships + 1) // 2)  # At least 2 ships per attack
+
+    for target in enemy_targets[:max_attacks]:
+        if available_corvettes == 0 and available_fighters == 0 and available_death_stars == 0:
+            break
+
+        target_location = target['location']
+        owner = target['owner']
+        population = target['population']
+        defenses = target['defenses']
+
+        # Determine attack force composition based on target strength and available ships
+        # Stronger colonies (more population/defenses) get larger attack forces
+        target_strength = population + (defenses * 3)  # Missile bases count more
+
+        # Flexible force composition
+        corvettes_to_send = 0
+        fighters_to_send = 0
+        death_stars_to_send = 0
+
+        if target_strength > 15:  # Strong target
+            # Send overwhelming force
+            corvettes_to_send = min(3, available_corvettes)
+            fighters_to_send = min(2, available_fighters)
+            death_stars_to_send = min(1, available_death_stars)
+        elif target_strength > 8:  # Medium target
+            # Send moderate force with varied composition
+            if available_corvettes >= 2:
+                corvettes_to_send = 2
+            elif available_corvettes == 1:
+                corvettes_to_send = 1
+                fighters_to_send = min(1, available_fighters)
+            else:
+                fighters_to_send = min(2, available_fighters)
+        else:  # Weak target
+            # Send minimal raiding force - mix it up
+            if available_fighters >= 2:
+                fighters_to_send = 2  # Fast fighter raid
+            elif available_corvettes >= 1:
+                corvettes_to_send = 1  # Single corvette raid
+                if available_fighters >= 1:
+                    fighters_to_send = 1  # Plus a fighter
+            else:
+                # Use whatever we have
+                corvettes_to_send = min(1, available_corvettes)
+                fighters_to_send = min(1, available_fighters)
+
+        # Ensure we're sending at least something
+        total_ships_to_send = corvettes_to_send + fighters_to_send + death_stars_to_send
+        if total_ships_to_send == 0:
+            continue
+
+        # Find next available task force number
+        tf_number = 2
+        if hasattr(game_state, 'movement_plans') and player.player_id in game_state.movement_plans:
+            existing_tfs = set(game_state.movement_plans[player.player_id].keys())
+            while tf_number in existing_tfs:
+                tf_number += 1
+
+        # Build attack force description
+        force_parts = []
+        if corvettes_to_send > 0:
+            force_parts.append(f"{corvettes_to_send} corvette{'s' if corvettes_to_send > 1 else ''}")
+        if fighters_to_send > 0:
+            force_parts.append(f"{fighters_to_send} fighter{'s' if fighters_to_send > 1 else ''}")
+        if death_stars_to_send > 0:
+            force_parts.append(f"{death_stars_to_send} death star{'s' if death_stars_to_send > 1 else ''}")
+        force_desc = " + ".join(force_parts)
+
+        # Show target strength assessment
+        if defenses > 0:
+            target_desc = f"{population}M pop, {defenses} missile bases"
+        else:
+            target_desc = f"{population}M pop, undefended"
+
+        print(f"   🗡️  Creating TF{tf_number}: {force_desc} → ATTACK {owner}'s colony at {target_location} ({target_desc})")
+
+        # Get path to target
+        from stellar_conquest.utils.hex_utils import HexGrid
+        hex_grid = HexGrid()
+
+        try:
+            complete_path = hex_grid.find_shortest_path(entry_hex, target_location)
+            if not complete_path:
+                print(f"     ⚠️  Unable to find path to {target_location}, skipping")
+                continue
+        except Exception as e:
+            print(f"     ⚠️  Path finding error: {e}, skipping")
+            continue
+
+        # Create the attack task force
+        all_success = True
+
+        if corvettes_to_send > 0:
+            corvette_success = split_ships_into_task_force(
+                player, entry_hex, ShipType.CORVETTE, corvettes_to_send, tf_number
+            )
+            if corvette_success:
+                available_corvettes -= corvettes_to_send
+            else:
+                all_success = False
+
+        if fighters_to_send > 0:
+            fighter_success = split_ships_into_task_force(
+                player, entry_hex, ShipType.FIGHTER, fighters_to_send, tf_number
+            )
+            if fighter_success:
+                available_fighters -= fighters_to_send
+            else:
+                all_success = False
+
+        if death_stars_to_send > 0:
+            death_star_success = split_ships_into_task_force(
+                player, entry_hex, ShipType.DEATH_STAR, death_stars_to_send, tf_number
+            )
+            if death_star_success:
+                available_death_stars -= death_stars_to_send
+            else:
+                all_success = False
+
+        if all_success:
+            # Store movement plan for attack mission
+            if not hasattr(game_state, 'movement_plans'):
+                game_state.movement_plans = {}
+            if player.player_id not in game_state.movement_plans:
+                game_state.movement_plans[player.player_id] = {}
+
+            game_state.movement_plans[player.player_id][tf_number] = {
+                'planned_path': complete_path,
+                'path_index': 0,
+                'final_destination': target_location,
+                'target_name': f"{owner}'s colony",
+                'can_move_this_turn': True,
+                'mission_type': 'attack',
+                'target_owner': owner
+            }
+
+            distance = target['distance']
+            turns_to_reach = (distance + player.current_ship_speed - 1) // player.current_ship_speed
+            print(f"     ✅ Attack force created - ETA {turns_to_reach} turns")
+            attacks_launched += 1
+        else:
+            print(f"     ❌ Attack force creation failed")
+
+    if attacks_launched > 0:
+        print(f"   ⚔️  {attacks_launched} attack mission{'s' if attacks_launched > 1 else ''} launched!")
+
 def create_exploration_task_forces(game_state, player, turn_number=2):
     """Split starting fleet into multiple exploration task forces."""
     print(f"   {player.name} organizes multiple task forces for exploration:")
-    
+
     entry_hex = player.entry_hex
     main_group = None
     for group in player.ship_groups:
         if group.location == entry_hex:
             main_group = group
             break
-    
+
     if not main_group:
         print(f"   No ships found at entry hex {entry_hex}")
         return
-    
+
+    # For Warlord play style: Send scouts to enemy yellow stars for reconnaissance (turn 2+)
+    if player.play_style.value == "warlord" and turn_number >= 2:
+        send_warlord_scouts_to_enemy_yellow_stars(game_state, player, main_group, turn_number)
+
+    # For Warlord play style after turn 4, check for attack opportunities
+    if player.play_style.value == "warlord" and turn_number >= 4:
+        enemy_targets = find_enemy_colonies(game_state, player)
+
+        if enemy_targets:
+            print(f"   ⚔️  WARLORD MODE ACTIVATED: {len(enemy_targets)} enemy colony location{'s' if len(enemy_targets) != 1 else ''} discovered in explored systems!")
+            for i, target in enumerate(enemy_targets[:3], 1):  # Show top 3 targets
+                print(f"      Target {i}: {target['owner']}'s colony at {target['location']} - {target['distance']} hexes away")
+            create_attack_task_forces_from_all_locations(game_state, player, enemy_targets, turn_number)
+        else:
+            print(f"   🔍 Warlord scouting: No enemy colonies discovered yet in explored systems")
+
     nearby_stars = find_nearest_stars(entry_hex, 8)
     
     if len(nearby_stars) >= 2:
@@ -2179,13 +2998,14 @@ def resolve_ship_combat(game_state, location, attacker_player, defender_player, 
             battle_stats[defender_player.name]['battles'] += 1
 
         # Determine winner based on combat_result
-        # Combat results typically include player names like "Admiral Nova wins" or similar
-        if combat_result and attacker_player.name in combat_result:
+        # Combat results are: 'attacker_victory', 'defender_victory', 'mutual_annihilation', 'mutual_withdrawal'
+        if combat_result == 'attacker_victory':
             if attacker_player.name in battle_stats:
                 battle_stats[attacker_player.name]['victories'] += 1
-        elif combat_result and defender_player.name in combat_result:
+        elif combat_result == 'defender_victory':
             if defender_player.name in battle_stats:
                 battle_stats[defender_player.name]['victories'] += 1
+        # Note: mutual_annihilation and mutual_withdrawal don't count as victories for either side
 
     return True, combat_result
 
@@ -2378,6 +3198,8 @@ def debark_colonists(game_state, player, turn_number):
                             print(f"   ⚠️ {transports_remaining} transports couldn't be deployed (all suitable planets full)")
                     else:
                         print(f"   🚫 {star_name}: No colonizable planets available")
+                        # Retarget to a new star system with habitable planets
+                        retarget_colony_transports(game_state, player, group, location, turn_number)
                 else:
                     print(f"   📍 Task force at {location}: Star system not explored or no planets")
             else:
@@ -2389,6 +3211,129 @@ def debark_colonists(game_state, player, turn_number):
     else:
         print(f"   {player.name} successfully established {colonization_attempts} new colonies")
         return True
+
+def retarget_colony_transports(game_state, player, group, current_location, turn_number):
+    """Retarget colony transports to a new star system when current target has no colonizable planets.
+
+    Priority:
+    1. Systems with known Terran planets (discovered by scouts)
+    2. Systems with known Sub-Terran planets
+    3. Unexplored yellow stars (high probability of habitable planets)
+    """
+    from stellar_conquest.utils.hex_utils import HexGrid
+    from stellar_conquest.core.enums import PlanetType
+
+    # Find systems with known habitable planets
+    systems_with_terran = []
+    systems_with_subterran = []
+
+    # Check explored systems
+    if hasattr(game_state.board, 'star_systems'):
+        for star_location, star_system in game_state.board.star_systems.items():
+            if star_location == current_location:
+                continue  # Skip current location
+
+            # Only consider systems this player has explored
+            if hasattr(game_state.board, 'explored_systems'):
+                if star_location not in game_state.board.explored_systems:
+                    continue
+                if player.player_id not in game_state.board.explored_systems[star_location]:
+                    continue
+
+            # Check for habitable planets
+            if hasattr(star_system, 'planets') and star_system.planets:
+                for planet in star_system.planets:
+                    # Check if planet is colonizable
+                    if can_colonize_planet(planet, player, game_state):
+                        distance = calculate_hex_distance(current_location, star_location)
+                        star_data = FIXED_STAR_LOCATIONS.get(star_location, {})
+                        star_name = star_data.get('starname', f'Star_{star_location}')
+
+                        if planet.planet_type == PlanetType.TERRAN:
+                            systems_with_terran.append({
+                                'location': star_location,
+                                'name': star_name,
+                                'distance': distance,
+                                'planet_type': 'Terran'
+                            })
+                        elif planet.planet_type == PlanetType.SUB_TERRAN:
+                            systems_with_subterran.append({
+                                'location': star_location,
+                                'name': star_name,
+                                'distance': distance,
+                                'planet_type': 'Sub-Terran'
+                            })
+                        break  # Found at least one habitable planet
+
+    # Sort by distance
+    systems_with_terran.sort(key=lambda x: x['distance'])
+    systems_with_subterran.sort(key=lambda x: x['distance'])
+
+    # Select target (prioritize Terran, then Sub-Terran)
+    new_target = None
+    if systems_with_terran:
+        new_target = systems_with_terran[0]
+        print(f"      🎯 Retargeting to {new_target['name']} at {new_target['location']} (known {new_target['planet_type']} planet, {new_target['distance']} hexes)")
+    elif systems_with_subterran:
+        new_target = systems_with_subterran[0]
+        print(f"      🎯 Retargeting to {new_target['name']} at {new_target['location']} (known {new_target['planet_type']} planet, {new_target['distance']} hexes)")
+    else:
+        # No known habitable planets - target nearest unexplored yellow star
+        yellow_stars = find_nearest_yellow_stars(current_location, 15)
+
+        for star_location, distance, name, color in yellow_stars:
+            # Skip if already explored or already targeted
+            if hasattr(game_state.board, 'explored_systems'):
+                if star_location in game_state.board.explored_systems:
+                    if player.player_id in game_state.board.explored_systems[star_location]:
+                        continue  # Already explored
+
+            new_target = {
+                'location': star_location,
+                'name': name,
+                'distance': distance,
+                'planet_type': 'Unknown (yellow star)'
+            }
+            print(f"      🎯 Retargeting to {new_target['name']} at {new_target['location']} (unexplored yellow star, {new_target['distance']} hexes)")
+            break
+
+    if new_target:
+        # Create new movement plan
+        hex_grid = HexGrid()
+        try:
+            new_path = hex_grid.find_shortest_path(current_location, new_target['location'])
+            if new_path:
+                # Find the TF number for this group
+                tf_number = group.task_force_id if hasattr(group, 'task_force_id') else None
+
+                # If we can't find TF number from group, look for it in ships
+                if tf_number is None and group.ships:
+                    tf_number = group.ships[0].task_force_id
+
+                if tf_number is not None:
+                    # Update movement plan
+                    if not hasattr(game_state, 'movement_plans'):
+                        game_state.movement_plans = {}
+                    if player.player_id not in game_state.movement_plans:
+                        game_state.movement_plans[player.player_id] = {}
+
+                    game_state.movement_plans[player.player_id][tf_number] = {
+                        'planned_path': new_path,
+                        'path_index': 0,
+                        'final_destination': new_target['location'],
+                        'target_name': new_target['name'],
+                        'can_move_this_turn': False,  # Already moved this turn
+                        'mission_type': 'colonization'
+                    }
+
+                    turns_to_reach = (new_target['distance'] + player.current_ship_speed - 1) // player.current_ship_speed
+                    print(f"      ✅ New colonization target set - ETA {turns_to_reach} turns")
+                else:
+                    print(f"      ⚠️  Could not retarget: unable to find task force number")
+        except Exception as e:
+            print(f"      ⚠️  Could not retarget: {e}")
+    else:
+        print(f"      ⚠️  No suitable colonization targets found")
 
 def can_colonize_planet(planet, player, game_state):
     """Check if a planet can be colonized by the player."""
@@ -3806,15 +4751,127 @@ def create_new_task_forces(game_state, player, turn_number):
         if not player.has_entered_board:
             place_starting_fleet_with_task_force_id(player)
             print(f"   {player.name} enters the game at {player.entry_hex}")
-        
+
         # Create additional task forces from the starting fleet
         create_exploration_task_forces(game_state, player, turn_number)
     else:
+        # Later turns: Warlord sends scouts to enemy yellow stars for reconnaissance
+        if player.play_style.value == "warlord" and turn_number >= 2:
+            # Find main group at entry hex
+            main_group = None
+            for group in player.ship_groups:
+                if group.location == player.entry_hex:
+                    main_group = group
+                    break
+
+            if main_group:
+                send_warlord_scouts_to_enemy_yellow_stars(game_state, player, main_group, turn_number)
+
+        # Later turns: Check if any rally forces have assembled and launch attacks
+        if player.play_style.value == "warlord" and hasattr(game_state, 'attack_staging'):
+            if player.player_id in game_state.attack_staging:
+                staging_list = game_state.attack_staging[player.player_id]
+
+                # Check each staged attack
+                for staging in staging_list[:]:  # Use slice to allow removal during iteration
+                    rally_point = staging['rally_point']
+                    rally_tfs = staging.get('rally_tfs', [])  # List of TFs heading to rally
+                    target = staging['target']
+                    target_owner = staging['target_owner']
+
+                    # Check if ALL rally TFs have arrived at rally point
+                    all_arrived = True
+
+                    if rally_tfs:
+                        # Check that each rally TF has arrived
+                        for tf_num in rally_tfs:
+                            tf_arrived = False
+                            for group in player.ship_groups:
+                                if group.location == rally_point:
+                                    # Check if this group contains ships from this TF
+                                    for ship in group.ships:
+                                        if ship.task_force_id == tf_num:
+                                            tf_arrived = True
+                                            break
+                                if tf_arrived:
+                                    break
+
+                            if not tf_arrived:
+                                all_arrived = False
+                                break
+
+                    # If all rally TFs have arrived (or no rally TFs), count ALL warships at rally point
+                    total_corvettes = 0
+                    total_fighters = 0
+                    total_death_stars = 0
+
+                    if all_arrived:
+                        for group in player.ship_groups:
+                            if group.location == rally_point:
+                                ship_counts = group.get_ship_counts()
+                                total_corvettes += ship_counts.get(ShipType.CORVETTE, 0)
+                                total_fighters += ship_counts.get(ShipType.FIGHTER, 0)
+                                total_death_stars += ship_counts.get(ShipType.DEATH_STAR, 0)
+
+                    if all_arrived and (total_corvettes + total_fighters + total_death_stars > 0):
+                        # Forces have assembled! Launch the attack
+                        print(f"   ⚔️  FORCES ASSEMBLED at {rally_point}!")
+                        print(f"      {total_corvettes} corvettes, {total_fighters} fighters, {total_death_stars} death stars ready")
+                        print(f"      Launching attack on {target_owner}'s colony at {target}")
+
+                        # Find target info
+                        target_pop = 0
+                        target_defenses = 0
+                        for other_player in game_state.players:
+                            if other_player.name == target_owner:
+                                for colony in other_player.colonies:
+                                    if colony.location == target:
+                                        target_pop = colony.population
+                                        target_defenses = getattr(colony, 'missile_bases', 0)
+                                        break
+
+                        # Launch the attack from rally point
+                        success = create_single_attack_task_force(
+                            game_state, player, rally_point, target, target_owner,
+                            target_pop, target_defenses, total_corvettes, total_fighters, total_death_stars, turn_number
+                        )
+
+                        if success:
+                            # Remove from staging list
+                            staging_list.remove(staging)
+
+        # ALL players should check for attack opportunities every turn (turn 4+)
+        if turn_number >= 4:
+            enemy_targets = find_enemy_colonies(game_state, player)
+
+            if enemy_targets:
+                # Warlord uses sophisticated rally point strategy
+                if player.play_style.value == "warlord":
+                    # Check if we already have an attack staged for this target
+                    already_staging = False
+                    if hasattr(game_state, 'attack_staging') and player.player_id in game_state.attack_staging:
+                        for staging in game_state.attack_staging[player.player_id]:
+                            if staging['target'] == enemy_targets[0]['location']:
+                                already_staging = True
+                                break
+
+                    if not already_staging:
+                        print(f"   ⚔️  WARLORD MODE ACTIVATED: {len(enemy_targets)} enemy colony location{'s' if len(enemy_targets) != 1 else ''} discovered in explored systems!")
+                        for i, target in enumerate(enemy_targets[:3], 1):  # Show top 3 targets
+                            print(f"      Target {i}: {target['owner']}'s colony at {target['location']} - {target['distance']} hexes away")
+                        create_attack_task_forces_from_all_locations(game_state, player, enemy_targets, turn_number)
+                else:
+                    # Other play styles use simpler opportunistic attacks
+                    create_opportunistic_attacks(game_state, player, enemy_targets, turn_number)
+            else:
+                if player.play_style.value == "warlord":
+                    print(f"   🔍 Warlord scouting: No enemy colonies discovered yet in explored systems")
+
         # Later turns: Can only create task forces when at star hexes
         for tf_index, group in enumerate(player.ship_groups):
             tf_number = tf_index + 1
             location = group.location
-            
+
             if game_state.board.is_star_location(location):
                 # At star hex - can potentially create new task forces
                 # For now, keep existing logic simple

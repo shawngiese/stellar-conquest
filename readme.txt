@@ -54,7 +54,10 @@ Enable things like
 * AI decision system - Makes intelligent decisions based on configurable play styles
 * Intelligence log - To capture what each player knows about the universe and their opponents
 
-
+CHANGES
+To simplify the simulation some decisions:
+* sending ships to battle an opponent star hex first start with a rally starhex for the various desired warships to come together and then travel together for the battle
+* There is a 44th round production run. Maybe players build ships in systems that will give them victory points.
 
 TODO
 Lots os stuff!
@@ -64,3 +67,8 @@ For example:
 * Enable What-If Scenarios to run combat, production and strategy scenarios
 * Monte Carlo support - to run thousands of iterations for statistical significance
 * Clean up fly distance markings on the map
+* Some ships keep trying to go back to their destination very often, ships that flee a warship hex should have a chance to make a new destination.
+
+version 2
+* In the off chance a task force with colonists arrives at a star hex and there are no suitable planets, then they must target a new star hex.
+* Added more hostilities so warships are sometimes used for battle.
