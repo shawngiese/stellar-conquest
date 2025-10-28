@@ -7,14 +7,21 @@ Run "pip install -r requirements.txt"
 START
 Typically takes about 3 minutes to run on a modern PC. 
 
-Attempting to simulate the board game Stellar Conquest. It has always proven hard to audit the game progress so hoping this also helps understand new techniques to track the game state. Also, generate a state log that can feed an AI for it to write short stories taking place in the game universe.
+Attempting to simulate the board game Stellar Conquest. It has always proven hard to audit the game progress so hoping this also helps understand new techniques to track the game state. Main goals:
+
+* Study game play strategy
+* Generate an audit log state log to pull out narratives taking place in the game universe
+* Enable real players to take a place at the table and play against the strategies
 
 RUN 
-Execute either the following and see the logs as they are generated
-python auto_demo_enhanced_maps.py | tee output/output_statsTEST.txt
+Linux / Windows WSL / WSL - Execute the following and see the audit logs as they are generated
+  python auto_demo_enhanced_maps.py | tee output/output_statsTEST.txt
 
-or the following, but no onscreen updates for 3 minutes
-python auto_demo_enhanced_maps.py > output/outputTEST.txt
+Or Windows following, but no onscreen updates for 3 minutes, audit log saved
+  python auto_demo_enhanced_maps.py > output/outputTEST.txt
+
+Or just the following to fill your console with way too much audit log:
+  python auto_demo_enhanced_maps.py
 
 Typical run time is 3 minutes, 2 for the simulation and 1 more for writing a lot of map files.
 
@@ -22,20 +29,18 @@ THEN
 open map_index.html
 maps are SVG so you can zoom your browser in to see details.
 
+Lots to improve and verify. The long audit log (game outout at this point) 
+
 OPTIONAL
 Other tools 
 - audit_players.py
-  What it does: Splits any output_statsXX.txt file into individual player files with clean formatting and
-  helpful commands.
+  Splits any output_statsXX.txt file into individual player files .
 
   Usage:
   python audit_players.py output/outputTEST.txt 
-  python audit_players.py --list
-  python audit_players.py --help
-
 
 - audit_taskforce.py
-  What it does: Creates detailed movement audit logs for each player's taskforces showing:
+  Creates detailed movement audit logs for each player's taskforces showing:
   - All 44 turns of activity (or gaps)
   - Complete ship compositions at creation
   - Turn-by-turn movement tracking
@@ -43,8 +48,6 @@ Other tools
 
   Usage:
   python audit_taskforce.py output/outputTEST.txt
-  python audit_taskforce.py --list
-
 
 IDEAS
 Enable things like
@@ -72,12 +75,12 @@ For example:
 * Verify endgame statistics are correct
 
 
-version 2.1
+version 0.2
 * Accounted for 4.2 COLONY ATTACK AND CONQUEST  
 * Accounted for 4.3 BESIEGED COLONIES
 * Accounted for 4.4 CONQUERED COLONIES
 
-version 2
+version 0.1
 * In the off chance a task force with colonists arrives at a star hex and there are no suitable planets, then they must target a new star hex.
 * Added more hostilities so warships are sometimes used for battle.
 
